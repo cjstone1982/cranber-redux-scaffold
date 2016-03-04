@@ -1,6 +1,7 @@
 {
   "name": "Cranberry-Scaffold",
   "version": "0.0.1",
+  "author": "Guox",
   "entry": {
     "index": "./src/entry/index.jsx"
   },

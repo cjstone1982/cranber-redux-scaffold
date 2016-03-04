@@ -21,7 +21,7 @@ const Sidebar = React.createClass({
       <Menu onClick={this.handleClick}
             style={{ width: 240, height: '100%'}}
             defaultOpenKeys={['sub1']}
-            theme="dark"
+            theme="dark-blue"
             selectedKeys={[this.state.current]}
             mode="inline">
         <SubMenu key="sub1" title={<span><Icon type="mail" /><span>导航一</span></span>}>
