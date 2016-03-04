@@ -1,0 +1,19 @@
+#app{
+  height: 100%;
+}
+.layout-header{
+  height: 50px;
+  border-bottom: 1px solid rgb(240, 240, 240);
+  width: 100%;
+}
+.layout-sidebar{
+  float: left;
+  height: 100%;
+}
+.layout-contentbox{
+  padding: 20px 10px 0 250px;
+}
+.header-logo{
+  height: 36px;
+  margin: 7px 0 7px 20px;
+}
