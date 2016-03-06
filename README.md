@@ -13,9 +13,10 @@ TWTStudio React Scaffold For Admin System
 
 ### 原则
 - 贴合业务，适应灵活的业务需求
-- 方便配置，尽可能发挥JSX- 
+- 方便配置，尽可能发挥JSX的优越性
 - 封装React路由，抽象成数据结构代码
 - 友好的状态展示，如各类情求的message，process等
+- 语义化，未接触JS也能快速上手
 
 ### 标配
 |组成|选型|
@@ -23,3 +24,11 @@ TWTStudio React Scaffold For Admin System
 |View层|React|
 |路由|React-Router|
 |UI组件|Ant.design|
+
+### 层次
+- /
+  - App Layout
+	  - ContentBox + Router
+		  - Content Layout + Grid
+			  - Components
+  -Login

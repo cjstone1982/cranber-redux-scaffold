@@ -1,8 +1,10 @@
+"use strict";
+
 import React from 'react';
 import { Menu, Icon } from 'antd';
-const SubMenu = Menu.SubMenu;
-const MenuItemGroup = Menu.ItemGroup;
+import {Link} from 'react-router';
 
+const SubMenu = Menu.SubMenu;
 const Sidebar = React.createClass({
   getInitialState() {
     return {
@@ -24,16 +26,9 @@ const Sidebar = React.createClass({
             theme="dark-blue"
             selectedKeys={[this.state.current]}
             mode="inline">
-        <SubMenu key="sub1" title={<span><Icon type="mail" /><span>导航一</span></span>}>
-          <MenuItemGroup title="分组1">
-            <Menu.Item key="1">选项1</Menu.Item>
-            <Menu.Item key="2">选项2</Menu.Item>
-          </MenuItemGroup>
-          <MenuItemGroup title="分组2">
-            <Menu.Item key="3">选项3</Menu.Item>
-            <Menu.Item key="4">选项4</Menu.Item>
-          </MenuItemGroup>
-        </SubMenu>
+        <Menu.Item key="1">
+          <Link to="/menu1">menu1</Link>
+        </Menu.Item>
         <SubMenu key="sub2" title={<span><Icon type="appstore" /><span>导航二</span></span>}>
           <Menu.Item key="5">选项5</Menu.Item>
           <Menu.Item key="6">选项6</Menu.Item>

@@ -24,6 +24,9 @@
 .ant-menu-dark-blue .ant-menu-inline.ant-menu-sub{
   background: rgb(34, 52, 68);
 }
+.ant-menu-dark-blue .ant-menu-item > a{
+  color:inherit;
+}
 .ant-menu-dark-blue .ant-menu-item-group-title,
 .ant-menu-dark-blue .ant-menu-inline.ant-menu-sub,
 .ant-menu-dark-blue .ant-menu-item-group{
@@ -33,6 +36,7 @@
 .ant-menu-dark-blue .ant-menu-submenu-title:hover{
   background: rgb(0, 182, 232);
 }
+.ant-menu-dark-blue .ant-menu-item-selected,
 .ant-menu-dark-blue .ant-menu-inline .ant-menu-selected,
 .ant-menu-dark-blue .ant-menu-inline .ant-menu-item-selected{
   background: rgb(0, 182, 232);
