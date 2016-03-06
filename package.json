@@ -3,18 +3,19 @@
   "version": "0.0.1",
   "author": "Guox",
   "entry": {
-    "index": "./src/entry/index.jsx"
+    "index": "./src/index.jsx"
   },
   "dependencies": {
     "antd": "~0.12.0",
     "atool-build": "0.5.x",
     "babel-plugin-antd": "^0.2.0",
     "es3ify-loader": "^0.1.0",
-    "react": "~0.14.6",
-    "react-dom": "~0.14.6",
     "history": "^2.0.1",
     "pre-commit": "1.x",
-    "react-router": "^2.0.0"
+    "react": "~0.14.6",
+    "react-dom": "~0.14.6",
+    "react-router": "^2.0.0",
+    "superagent": "^1.7.2"
   },
   "devDependencies": {
     "dora": "0.2.x",

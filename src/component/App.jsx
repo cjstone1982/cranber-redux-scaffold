@@ -12,7 +12,7 @@ const App = React.createClass({
       <div style={{ height: '100%' }}>
         <Header />
         <Sidebar />
-        <ContentBox />
+        <ContentBox children={this.props.children} />
       </div>
     );
   }

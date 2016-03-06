@@ -2,13 +2,14 @@
 
 import React from 'react';
 import '../stylesheets/login.css';
-import {History} from 'react-router';
 import {Button, Form, Input, Icon} from 'antd';
 
 const FormItem = Form.Item;
 
 const FormData = React.createClass({
-  mixins: [History],
+  contextTypes: {
+    router: React.PropTypes.object.isRequired
+  },
   getInitialState() {
     return {
       loading: false
@@ -18,7 +19,7 @@ const FormData = React.createClass({
     this.setState({
       loading:true
     });
-    this.history.push(null, '/');
+    this.context.router.push('/');
   },
   render() {
     return (
