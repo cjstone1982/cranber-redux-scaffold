@@ -10,8 +10,7 @@ const ContentBox = React.createClass({
     return (
       <div className="layout-contentbox">
         <div className="breadcrumb-wrapper">
-          <Breadcrumb
-            separator=">">
+          <Breadcrumb separator=">">
             <Breadcrumb.Item href="#/">首页</Breadcrumb.Item>
             <Breadcrumb.Item href="#/form">列表</Breadcrumb.Item>
             <Breadcrumb.Item>某应用</Breadcrumb.Item>

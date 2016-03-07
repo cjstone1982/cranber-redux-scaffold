@@ -24,14 +24,14 @@ TWTStudio React Scaffold For Admin System
 |View层|React|
 |路由|React-Router|
 |UI组件|Ant.design|
-|HTTP请求|superagent|
+|HTTP|[fetch](https://github.com/github/fetch)|
 
 数据层将根据后续业务需求范围的细化进一步构建.
 
 ### 层次
-- /
-  - App Layout
-	  - ContentBox + Router
+- App
+  - Manage + Layout
+	  - ContentBox
 		  - Content Layout + Grid
 			  - Components
-  -Login
+  - Login

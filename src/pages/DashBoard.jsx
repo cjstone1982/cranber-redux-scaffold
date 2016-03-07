@@ -2,14 +2,14 @@
 
 import React from 'react';
 
-const DashBoard = React.createClass({
+const ChartPage = React.createClass({
   render() {
     return (
       <div>
-        chart
+        Board
       </div>
     );
   }
 });
 
-export default DashBoard;
+export default ChartPage;

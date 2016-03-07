@@ -1,18 +1,14 @@
 "use strict";
 
 import React from 'react';
-import Sidebar from './Sidebar';
-import ContentBox from './ContentBox';
-import Header from './Header';
+import Manage from './Manage';
 import Loader from './Loader';
 
 const App = React.createClass({
   render() {
     return (
-      <div style={{ height: '100%' }}>
-        <Header />
-        <Sidebar />
-        <ContentBox children={this.props.children} />
+      <div style={{height: '100%'}}>
+        {this.props.children}
       </div>
     );
   }

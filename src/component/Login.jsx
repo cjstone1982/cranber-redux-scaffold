@@ -39,7 +39,7 @@ const FormData = React.createClass({
 });
 const FormPart = Form.create()(FormData);
 
-const LoginPage = React.createClass({
+const Login = React.createClass({
   render() {
     return (
       <div className="layout-login">
@@ -54,4 +54,4 @@ const LoginPage = React.createClass({
   }
 });
 
-export default LoginPage;
+export default Login;
