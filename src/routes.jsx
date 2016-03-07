@@ -24,15 +24,13 @@ const Routes = React.createClass({
   render() {
     return (
       <Router history={hashHistory}>
-        <Route path="/" component={App} >
-          <IndexRoute component={Manage} >
-            <IndexRoute component={DashBoard} />
-          </IndexRoute>
+        <Route component={App} >
+          <Route path="/login" component={Login} />
           <Route path="/" component={Manage} >
+            <IndexRoute component={DashBoard}/>
             <Route path="form" component={FormPage} />
             <Route path="chart" component={ChartPage} />
           </Route>
-          <Route path="login" component={Login} />
         </Route>
       </Router>
     );

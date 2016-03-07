@@ -26,7 +26,7 @@ const UserMenu = React.createClass({
   render() {
     return (
       <div className="layout-menu-user">
-        <Dropdown overlay={menu} trigger={'click'}>
+        <Dropdown overlay={menu} trigger={['click']}>
           <div>
             <img className="avatar" src={avatar_pic} />
             <Icon type="down" />
