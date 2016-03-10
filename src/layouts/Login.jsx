@@ -2,7 +2,7 @@
 
 import React from 'react';
 import '../stylesheets/login.css';
-import {Button, Form, Input, Icon} from 'antd';
+import {Button, Form, Input, Icon, message} from 'antd';
 
 const FormItem = Form.Item;
 
@@ -19,7 +19,14 @@ const FormData = React.createClass({
     this.setState({
       loading:true
     });
-    this.context.router.push('/');
+    if (0) {
+      message.error('用户名或密码错误');
+      this.setState({
+        loading: false
+      });
+    } else {
+      this.context.router.push('/');
+    }
   },
   render() {
     return (

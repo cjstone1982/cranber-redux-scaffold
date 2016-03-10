@@ -1,0 +1,19 @@
+.card-container{
+  padding: 5px !important;
+}
+.card{
+  color: #919BA1;
+  background-color: #fff;
+  padding: 10px 15px 10px 25px;
+  border: 1px solid #EDEDED;
+  border-radius: 5px;
+}
+.card .card-title{
+  font-weight: 500;
+  font-size: 1.2rem;
+  line-height: 2.4rem;
+  border-bottom: 2px solid #F3F3F3;
+}
+.card .card-body{
+  padding: 15px 0;
+}
