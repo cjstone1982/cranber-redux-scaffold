@@ -18,20 +18,22 @@ TWTStudio React Scaffold For Admin System
 - 友好的状态展示，如各类情求的message，process等
 - 语义化，未接触JS也能快速上手
 
-### 标配
-|组成|选型|
+### 架构
+|结构|选型|
 |---|---|
 |View层|React|
 |路由|React-Router|
 |UI组件|Ant.design|
 |HTTP|[fetch](https://github.com/github/fetch)|
-
-数据层将根据后续业务需求范围的细化进一步构建.
+|数据层|Redux|
 
 ### 层次
-- App
+- App View
   - Manage + Layout
 	  - ContentBox
 		  - Content Layout + Grid
 			  - Components
   - Login
+- Actions
+- Reducers
+- Store
