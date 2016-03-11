@@ -4,9 +4,10 @@ import React from 'react';
 import {Router, Route, Link, IndexRoute, hashHistory} from 'react-router';
 import App from './layouts/App';
 import Manage from './layouts/Manage';
+import Login from './layouts/Login';
 import FormPage from './pages/FormPage';
 import ChartPage from './pages/ChartPage';
-import Login from './layouts/Login';
+import TablePage from './pages/TablePage';
 import DashBoard from './pages/DashBoard';
 
 const Routes = React.createClass({
@@ -30,7 +31,8 @@ const Routes = React.createClass({
           <Route path="/" component={Manage} onEnter={this.checkLogin}>
             <IndexRoute component={DashBoard}/>
             <Route path="form" component={FormPage} />
-            <Route path="login" component={ChartPage} />
+            <Route path="chart" component={ChartPage} />
+            <Route path="table" component={TablePage} />
           </Route>
         </Route>
       </Router>

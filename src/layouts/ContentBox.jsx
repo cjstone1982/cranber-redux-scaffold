@@ -8,7 +8,7 @@ import Loader from './Loader';
 const ContentBox = React.createClass({
   render() {
     return (
-      <div className="layout-contentbox">
+      <div className="layout-contentbox clearfix">
         <div className="breadcrumb-wrapper">
           <Breadcrumb separator=">">
             <Breadcrumb.Item href="#/">首页</Breadcrumb.Item>

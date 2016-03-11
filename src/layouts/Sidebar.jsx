@@ -32,14 +32,15 @@ const Sidebar = React.createClass({
         <SubMenu key="sub2"
           title={<span><Icon type="appstore" /><span>组件</span></span>}>
           <Menu.Item key="2">
-            <Link to="/chart"><Icon type="appstore" /><span>表格</span></Link>
+            <Link to="/table"><Icon type="appstore" /><span>表格</span></Link>
           </Menu.Item>
           <Menu.Item key="3">
             <Link to="/form"><Icon type="appstore" /><span>表单</span></Link>
           </Menu.Item>
-          <SubMenu key="sub3" title="三级导航">
-            <Menu.Item key="4">选项7</Menu.Item>
-            <Menu.Item key="5">选项8</Menu.Item>
+          <SubMenu key="sub3" title="图表">
+            <Menu.Item key="4">
+              <Link to="/chart">线图</Link>
+            </Menu.Item>
           </SubMenu>
         </SubMenu>
       </Menu>

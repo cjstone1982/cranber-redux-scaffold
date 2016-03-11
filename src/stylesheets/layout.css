@@ -2,7 +2,7 @@
   height: 100%;
 }
 .layout-header{
-  height: 50px;
+  height: 44px;
   border-bottom: 1px solid rgb(240, 240, 240);
   width: 100%;
   display: flex;
@@ -11,28 +11,28 @@
   justify-content: space-between;
 }
 .layout-menu-user{
-  padding: 7px;
+  padding: 5px 10px 5px 0;
   cursor: pointer;
 }
 .layout-menu-user img.avatar{
   border-radius: 50%;
-  max-width: 35px;
-  height: 35px;
-  margin:0 10px;
+  width: 30px;
+  height: 30px;
+  margin:0 5px;
   vertical-align: middle;
 }
 .layout-sidebar{
   float: left;
-  height: 100%;
+  height: calc(100% - 44px);
 }
 .layout-contentbox{
-  background-color: #F3F3F3;
-  padding: 10px 30px 0 230px;
-  height: 100%;
+  overflow-y: scroll;
+  padding: 10px 30px 0 20px;
+  height: calc(100% - 44px);
 }
 .header-logo{
-  height: 36px;
-  margin: 7px 0 7px 20px;
+  height: 32px;
+  margin: 4px 0 4px 20px;
 }
 .ant-menu-dark-blue{
   background: rgb(38, 60, 78);

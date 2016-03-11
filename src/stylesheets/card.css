@@ -2,11 +2,9 @@
   padding: 5px !important;
 }
 .card{
-  color: #919BA1;
   background-color: #fff;
   padding: 10px 15px 10px 25px;
-  border: 1px solid #EDEDED;
-  border-radius: 5px;
+  border: 2px solid #E6ECED;
 }
 .card .card-title{
   font-weight: 500;
