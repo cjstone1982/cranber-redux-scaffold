@@ -43,11 +43,10 @@ const FormPart = Form.create()(FormData);
 
 const Login = React.createClass({
   propTypes: {
-    isLogin: PropTypes.bool.isRequired,
-    loginAction: PropTypes.func.isRequired
+    dispatch: PropTypes.func.isRequired
   },
   loginSubmit() {
-    this.props.loginAction('guox', 'test');
+    this.props.dispatch(loginAction('guox', 'test'));
     //if (0) {
     //  message.error('用户名或密码错误');
     //  this.setState({
@@ -74,6 +73,5 @@ const Login = React.createClass({
 });
 
 export default connect(
-  state => ({ isLogin: false }),
-  { loginAction, logoutAction }
+  state => ({ isLogin: state.login.isLogin})
 )(Login);
