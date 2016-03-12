@@ -2,11 +2,13 @@
 
 import { createStore, combineReducers } from 'redux';
 import { routerReducer } from 'react-router-redux';
-import Reducer from './reducers/reducer';
+
+import { login } from './reducers/auth';
+
 
 let Store = createStore(
   combineReducers({
-    ...Reducer,
+    login,
     routing: routerReducer
   })
 );

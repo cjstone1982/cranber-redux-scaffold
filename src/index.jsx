@@ -6,4 +6,3 @@ import './common/lib';
 ReactDOM.render((
   <Routes />
 ), document.getElementById('app'));
-

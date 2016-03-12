@@ -19,11 +19,6 @@ import DashBoard from './pages/DashBoard';
 const history = syncHistoryWithStore(hashHistory, Store);
 
 const Routes = React.createClass({
-  getInitialState() {
-    return {
-
-    };
-  },
   checkLogin(next, replace) {
     if (0) {
       replace('/login');

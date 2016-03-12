@@ -24,7 +24,7 @@ TWTStudio React Scaffold For Admin System
 |View层|React|
 |路由|React-Router|
 |UI组件|Ant.design|
-|HTTP|[fetch](https://github.com/github/fetch)|
+|HTTP|[isomorphic-fetch](https://github.com/matthew-andrews/isomorphic-fetch)|
 |数据层|Redux|
 
 ### 层次
