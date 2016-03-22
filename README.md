@@ -17,6 +17,7 @@ TWTStudio React Scaffold For Admin System
 - 封装React路由，抽象成数据结构代码
 - 友好的状态展示，如各类情求的message，process等
 - 语义化，未接触JS也能快速上手
+- 每个JSX文件包含一个主组件
 
 ### 架构
 |结构|选型|
@@ -26,6 +27,7 @@ TWTStudio React Scaffold For Admin System
 |UI组件|Ant.design|
 |HTTP|[isomorphic-fetch](https://github.com/matthew-andrews/isomorphic-fetch)|
 |数据层|Redux|
+|Middleware|[redux-logger](https://github.com/fcomb/redux-logger) [redux-thunk](https://github.com/gaearon/redux-thunk)|
 
 ### 层次
 - App View
@@ -37,3 +39,8 @@ TWTStudio React Scaffold For Admin System
 - Actions
 - Reducers
 - Store
+
+### 核心State
+  - login
+  - loading
+  - dashboard

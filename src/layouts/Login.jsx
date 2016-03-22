@@ -3,7 +3,7 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { Button, Form, Input, Icon, message } from 'antd';
-import { loginAction, logoutAction } from '../actions/authActions';
+import { loginStartAction, logoutAction } from '../actions/authActions';
 import '../stylesheets/login.css';
 
 const FormItem = Form.Item;
@@ -33,7 +33,7 @@ const FormData = React.createClass({
         <Button type="primary"
                 loading={ this.state.loading }
                 onClick={ this.props.loginSub } >
-          登录{this.props.isLogin ? 'yes': 'no'}
+          登录{this.props.isLogin ? "yes": "no"}
         </Button>
       </Form>
     );
@@ -46,15 +46,7 @@ const Login = React.createClass({
     dispatch: PropTypes.func.isRequired
   },
   loginSubmit() {
-    this.props.dispatch(loginAction('guox', 'test'));
-    //if (0) {
-    //  message.error('用户名或密码错误');
-    //  this.setState({
-    //    loading: false
-    //  });
-    //} else {
-    //  this.context.router.push('/');
-    //}
+    this.props.dispatch(loginStartAction('guox', 'test'));
   },
   render() {
     return (
@@ -63,7 +55,6 @@ const Login = React.createClass({
           <div className="login-logo">
             <img src="/src/images/logo.png" />
           </div>
-          {this.props.isLogin ? 'yes': 'no'}
           <FormPart isLogin={ this.props.isLogin }
                     loginSub={ this.loginSubmit } />
         </div>
@@ -72,6 +63,7 @@ const Login = React.createClass({
   }
 });
 
+//connect component with dispatch propType
 export default connect(
-  state => ({ isLogin: state.login.isLogin})
+  state => ({ isLogin: state.AuthReducer.isLogin})
 )(Login);
