@@ -2,15 +2,30 @@
 
 import React from 'react';
 import {Menu, Dropdown, Icon} from 'antd';
+import Store from '../store';
+import {LOGOUT} from '../constants';
 
 import avatar_pic from '../images/avatar.png';
 
+const MenuFunc = {
+  logout() {
+    Store.dispatch({type: LOGOUT});
+  },
+  message() {
+
+  }
+};
+
+const clickMenu = ({key}) => {
+  MenuFunc[key] && MenuFunc[key]();
+};
+
 const menu = (
-  <Menu>
-    <Menu.Item>
+  <Menu onClick={clickMenu}>
+    <Menu.Item key="message">
       <span>通知</span>
     </Menu.Item>
-    <Menu.Item>
+    <Menu.Item key="logout">
       <span>退出</span>
     </Menu.Item>
   </Menu>
@@ -19,9 +34,6 @@ const menu = (
 const UserMenu = React.createClass({
   contextTypes: {
     router: React.PropTypes.object.isRequired
-  },
-  userLogOut() {
-    this.context.router.push('/login');
   },
   render() {
     return (

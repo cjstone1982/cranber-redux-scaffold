@@ -20,7 +20,8 @@ const history = syncHistoryWithStore(hashHistory, Store);
 
 const Routes = React.createClass({
   checkLogin(next, replace) {
-    if (0) {
+    let isLogin = Store.getState().AuthReducer.isLogin;
+    if (!isLogin) {
       replace('/login');
     }
   },

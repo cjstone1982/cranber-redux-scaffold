@@ -44,3 +44,6 @@ TWTStudio React Scaffold For Admin System
   - login
   - loading
   - dashboard
+  
+### 参考文献
+  [Best practice on handling data flow for login / signup pages with redirect](https://github.com/reactjs/redux/issues/297)

@@ -8,13 +8,18 @@ import {
   LOGINSUCCESS
 } from '../constants';
 
+//thunk action creator
 export function loginStartAction(username, password) {
-  return {
-    type: LOGINSTART,
-    user: {
-      username: username,
-      password: password
-    }
+  return dispatch => {
+    //dispatch();
+
+    return fetch('/mock/login_success.json')
+      .then(res => {
+        dispatch(loginSuccessAction(res));
+      })
+      .catch(res => {
+        dispatch(loginFailAction(res));
+      });
   }
 }
 

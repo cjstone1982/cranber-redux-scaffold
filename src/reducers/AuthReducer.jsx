@@ -1,28 +1,43 @@
 "use strict";
 
 import * as constants from '../constants';
-import { hashHistory } from 'react-router';
+import {loginSuccessAction, loginFailAction} from '../actions/authActions';
+
+const initialState = {
+  isLogin: true,
+  isLoading: false
+};
+
 let switchMap = {};
 
-switchMap[constants.LOGINSTART] = () => {
-  return {isLogin: true};
+switchMap[constants.LOGINSTART] = (state) => {
+
 };
 
-switchMap[constants.LOGINSUCCESS] = () => {
-  return {isLogin: true};
+switchMap[constants.LOGINSUCCESS] = (state) => {
+  return Object.assign({}, state, {
+    isLogin: true,
+    isLoading: false
+  });
+
 };
 
-switchMap[constants.LOGINFAIL] = () => {
-  return {isLogin: true};
+switchMap[constants.LOGINFAIL] = (state) => {
+  return Object.assign({}, state, {
+    isLogin: true,
+    isLoading: false
+  });
 };
 
-switchMap[constants.LOGOUT] = () => {
-  return {isLogin: false};
+switchMap[constants.LOGOUT] = (state) => {
+  return Object.assign({}, state, {
+    isLogin: false
+  });
 };
 
-export function AuthReducer(state = {isLogin: false}, action) {
+export function AuthReducer(state = initialState, action) {
   if (switchMap[action.type]) {
-    return switchMap[action.type]();
+    return switchMap[action.type](state);
   } else{
     return state;
   }

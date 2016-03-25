@@ -13,9 +13,6 @@ const FormData = React.createClass({
     isLogin: PropTypes.bool.isRequired,
     loginSub: PropTypes.func.isRequired
   },
-  contextTypes: {
-    router: React.PropTypes.object.isRequired
-  },
   getInitialState() {
     return {
       loading: false
@@ -33,7 +30,7 @@ const FormData = React.createClass({
         <Button type="primary"
                 loading={ this.state.loading }
                 onClick={ this.props.loginSub } >
-          登录{this.props.isLogin ? "yes": "no"}
+          登录
         </Button>
       </Form>
     );
@@ -41,12 +38,18 @@ const FormData = React.createClass({
 });
 const FormPart = Form.create()(FormData);
 
+//@connect(state => { isLogin: state.AuthReducer.isLogin})
 const Login = React.createClass({
   propTypes: {
     dispatch: PropTypes.func.isRequired
   },
+  contextTypes: {
+    router: React.PropTypes.object.isRequired
+  },
   loginSubmit() {
-    this.props.dispatch(loginStartAction('guox', 'test'));
+    this.props.dispatch(loginStartAction('guox', 'test')).then( () => {
+      this.context.router.push('/');
+    });
   },
   render() {
     return (
