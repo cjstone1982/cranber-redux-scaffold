@@ -11,11 +11,15 @@ import {
 //thunk action creator
 export function loginStartAction(username, password) {
   return dispatch => {
-    //dispatch();
+    dispatch({
+      type: LOGINSTART
+    });
 
     return fetch('/mock/login_success.json')
       .then(res => {
-        dispatch(loginSuccessAction(res));
+        setTimeout(() => {
+          dispatch(loginSuccessAction(res));
+        }, 1500);
       })
       .catch(res => {
         dispatch(loginFailAction(res));

@@ -2,10 +2,10 @@
 
 import React from 'react';
 import {Menu, Dropdown, Icon} from 'antd';
-import Store from '../store';
-import {LOGOUT} from '../constants';
+import Store from '../../store';
+import {LOGOUT} from '../../constants';
 
-import avatar_pic from '../images/avatar.png';
+import avatar_pic from '../../images/avatar.png';
 
 const MenuFunc = {
   logout() {

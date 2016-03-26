@@ -8,9 +8,9 @@ import Store from './store';
 /*
  * components
  */
-import App from './layouts/App';
-import Manage from './layouts/Manage';
-import Login from './layouts/Login';
+import App from './containers/App';
+import Manage from './containers/Manage';
+import Login from './containers/Login';
 import FormPage from './pages/FormPage';
 import ChartPage from './pages/ChartPage';
 import TablePage from './pages/TablePage';
@@ -20,7 +20,7 @@ const history = syncHistoryWithStore(hashHistory, Store);
 
 const Routes = React.createClass({
   checkLogin(next, replace) {
-    let isLogin = Store.getState().AuthReducer.isLogin;
+    let isLogin = Store.getState().Login.isLogin;
     if (!isLogin) {
       replace('/login');
     }

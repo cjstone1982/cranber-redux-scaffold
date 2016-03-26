@@ -2,9 +2,9 @@
 
 import React from 'react';
 import {Link} from 'react-router';
-import UserMenu from './UserMenu.jsx';
+import UserMenu from './UserMenu';
 
-import logo_pic from '../images/logo.png';
+import logo_pic from '../../images/logo.png';
 
 const Header = React.createClass({
   render() {

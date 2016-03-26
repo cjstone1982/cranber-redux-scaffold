@@ -13,11 +13,6 @@ const FormData = React.createClass({
     isLogin: PropTypes.bool.isRequired,
     loginSub: PropTypes.func.isRequired
   },
-  getInitialState() {
-    return {
-      loading: false
-    };
-  },
   render() {
     return (
       <Form horizontal>
@@ -28,7 +23,7 @@ const FormData = React.createClass({
           <Input type="password" placeholder="密码"/>
         </FormItem>
         <Button type="primary"
-                loading={ this.state.loading }
+                loading={ this.props.isLoading }
                 onClick={ this.props.loginSub } >
           登录
         </Button>
@@ -36,9 +31,8 @@ const FormData = React.createClass({
     );
   }
 });
-const FormPart = Form.create()(FormData);
 
-//@connect(state => { isLogin: state.AuthReducer.isLogin})
+//@connect(state => {..})
 const Login = React.createClass({
   propTypes: {
     dispatch: PropTypes.func.isRequired
@@ -48,7 +42,9 @@ const Login = React.createClass({
   },
   loginSubmit() {
     this.props.dispatch(loginStartAction('guox', 'test')).then( () => {
-      this.context.router.push('/');
+      setTimeout(() => {
+        this.context.router.push('/');
+      }, 1500);
     });
   },
   render() {
@@ -58,7 +54,8 @@ const Login = React.createClass({
           <div className="login-logo">
             <img src="/src/images/logo.png" />
           </div>
-          <FormPart isLogin={ this.props.isLogin }
+          <FormData isLogin={ this.props.isLogin }
+                    isLoading={ this.props.isLoading }
                     loginSub={ this.loginSubmit } />
         </div>
       </div>
@@ -68,5 +65,5 @@ const Login = React.createClass({
 
 //connect component with dispatch propType
 export default connect(
-  state => ({ isLogin: state.AuthReducer.isLogin})
+  state => (state.Login)
 )(Login);

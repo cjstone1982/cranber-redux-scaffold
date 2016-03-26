@@ -4,14 +4,16 @@ import * as constants from '../constants';
 import {loginSuccessAction, loginFailAction} from '../actions/authActions';
 
 const initialState = {
-  isLogin: true,
+  isLogin: false,
   isLoading: false
 };
 
 let switchMap = {};
 
 switchMap[constants.LOGINSTART] = (state) => {
-
+  return Object.assign({}, state, {
+    isLoading: true
+  });
 };
 
 switchMap[constants.LOGINSUCCESS] = (state) => {
@@ -35,7 +37,7 @@ switchMap[constants.LOGOUT] = (state) => {
   });
 };
 
-export function AuthReducer(state = initialState, action) {
+export default function Login(state = initialState, action) {
   if (switchMap[action.type]) {
     return switchMap[action.type](state);
   } else{
