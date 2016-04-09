@@ -1,6 +1,6 @@
 {
   "name": "Cranberry-Scaffold",
-  "version": "0.0.1",
+  "version": "0.4.0",
   "author": "Guox",
   "entry": {
     "index": "./src/index.jsx"
@@ -21,6 +21,7 @@
     "react-router-redux": "^4.0.0",
     "redux": "^3.3.1",
     "redux-logger": "^2.6.1",
+    "fbjs": "^0.8.0",
     "redux-thunk": "^2.0.1"
   },
   "devDependencies": {

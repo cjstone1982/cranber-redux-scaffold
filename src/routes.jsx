@@ -6,23 +6,38 @@ import { syncHistoryWithStore } from 'react-router-redux';
 import { Provider } from 'react-redux';
 import Store from './store';
 /*
- * components
+  layout
  */
 import App from './containers/App';
 import Manage from './containers/Manage';
 import Login from './containers/Login';
-import FormPage from './pages/FormPage';
-import ChartPage from './pages/ChartPage';
-import TablePage from './pages/TablePage';
-import DashBoard from './pages/DashBoard';
+/*
+  pages
+ */
+import AccountsIndex from './pages/accounts/index';
+import OrdersIndex from './pages/orders/index';
 
 const history = syncHistoryWithStore(hashHistory, Store);
 
 const Routes = React.createClass({
   checkLogin(next, replace) {
-    let isLogin = Store.getState().Login.isLogin;
-    if (!isLogin) {
+    let isLogin = Store.getState().Auth.isLogin;
+    if (!isLogin && !this.checkLocalSession()) {
       replace('/login');
+    }
+  },
+  checkLocalSession() {
+    let localToken = window.localStorage.getItem('session');
+    if (localToken) {
+      Store.dispatch({
+        type: 'LOGINSUCCESS',
+        payload: {
+          token: localToken
+        }
+      });
+      return true;
+    } else {
+      return false;
     }
   },
   render() {
@@ -32,10 +47,9 @@ const Routes = React.createClass({
           <Route component={App} >
             <Route path="/login" component={Login} />
             <Route path="/" component={Manage} onEnter={this.checkLogin}>
-              <IndexRoute component={DashBoard}/>
-              <Route path="form" component={FormPage} />
-              <Route path="chart" component={ChartPage} />
-              <Route path="table" component={TablePage} />
+              <IndexRoute component={AccountsIndex}/>
+              <Route path="accounts" component={AccountsIndex} />
+              <Route path="orders" component={OrdersIndex} />
             </Route>
           </Route>
         </Router>

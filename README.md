@@ -41,6 +41,15 @@ TWTStudio React Scaffold For Admin System
 - Store
 
 ### 核心State
+  - message: 全局消息通知, 包括message, notification
+
+    ```
+     {
+        "message": {},
+        "notification": {}
+     }
+    ```
+
   - login
   - loading
   - dashboard

@@ -1,49 +1,60 @@
 "use strict";
 
 import fetch from 'isomorphic-fetch';
+import config from '../config/app';
 import {
   LOGINSTART,
   LOGOUT,
   LOGINFAIL,
   LOGINSUCCESS
 } from '../constants';
+import {OpenMessageAction} from './messageActions';
 
 //thunk action creator
 export function loginStartAction(username, password) {
   return dispatch => {
-    dispatch({
-      type: LOGINSTART
+    return fetch(`${config.base_url}/accounts/login`, {
+      method: 'post',
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: `{"mobileNumber":${username},"password":"${password}"}`
+    }).then(res => res.json()).then(res => {
+      window.localStorage.setItem('session', res.sessionToken);
+      dispatch(OpenMessageAction('message', 'success', '登录成功'));
+      dispatch(loginSuccessAction(res));
+    }).catch(res => {
+      console.log(res);
+      dispatch(OpenMessageAction('message', 'error', res.error));
+      dispatch(loginFailAction());
     });
-
-    return fetch('/mock/login_success.json')
-      .then(res => {
-        setTimeout(() => {
-          dispatch(loginSuccessAction(res));
-        }, 1500);
-      })
-      .catch(res => {
-        dispatch(loginFailAction(res));
-      });
   }
 }
 
 export function loginSuccessAction(res) {
   return {
     type: LOGINSUCCESS,
-    response: res
+    payload: {
+      token: res.sessionToken
+    }
   }
 }
 
-export function loginFailAction(error) {
+export function loginFailAction() {
   return {
-    type: LOGINFAIL,
-    error: error
+    type: LOGINFAIL
   }
 }
-
 
 export function logoutAction() {
   return {
     type: LOGOUT
+  }
+}
+
+
+export function FlushSession() {
+  return dispatch => {
+    window.localStorage.removeItem('session');
   }
 }

@@ -21,4 +21,6 @@ const Card = React.createClass({
   }
 });
 
-export default Card;
+export default{
+  Card: Card
+} ;

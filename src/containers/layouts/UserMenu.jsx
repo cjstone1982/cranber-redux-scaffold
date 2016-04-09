@@ -3,16 +3,15 @@
 import React from 'react';
 import {Menu, Dropdown, Icon} from 'antd';
 import Store from '../../store';
+import {FlushSession} from '../../actions/authActions';
 import {LOGOUT} from '../../constants';
 
 import avatar_pic from '../../images/avatar.png';
 
 const MenuFunc = {
   logout() {
+    window.localStorage.removeItem('session'); //need patch
     Store.dispatch({type: LOGOUT});
-  },
-  message() {
-
   }
 };
 
@@ -22,9 +21,6 @@ const clickMenu = ({key}) => {
 
 const menu = (
   <Menu onClick={clickMenu}>
-    <Menu.Item key="message">
-      <span>通知</span>
-    </Menu.Item>
     <Menu.Item key="logout">
       <span>退出</span>
     </Menu.Item>

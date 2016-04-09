@@ -20,28 +20,22 @@ const Sidebar = React.createClass({
     return (
       <div className="layout-sidebar"
            style={{ width: 210 }}>
-      <Menu onClick={this.handleClick}
-            style={{ width: 210, height: '100%'}}
+        <div className="layout-title"></div>
+        <Menu onClick={this.handleClick}
+            style={{ width: 210}}
             defaultOpenKeys={['sub1']}
             theme="dark-blue"
             selectedKeys={[this.state.current]}
             mode="inline">
-        <Menu.Item key="1">
-          <Link to="/"><Icon type="appstore" /><span>面板</span></Link>
-        </Menu.Item>
-        <SubMenu key="sub2"
-          title={<span><Icon type="appstore" /><span>组件</span></span>}>
-          <Menu.Item key="2">
-            <Link to="/table"><Icon type="appstore" /><span>表格</span></Link>
+        <SubMenu key="sub1" title={<span><Icon type="appstore" />用户管理</span>}>
+          <Menu.Item key="1">
+            <Link to="/accounts"><span>用户列表</span></Link>
           </Menu.Item>
+        </SubMenu>
+        <SubMenu key="sub2" title={<span><Icon type="appstore" />订单管理</span>}>
           <Menu.Item key="3">
-            <Link to="/form"><Icon type="appstore" /><span>表单</span></Link>
+            <Link to="/orders">订单列表</Link>
           </Menu.Item>
-          <SubMenu key="sub3" title="图表">
-            <Menu.Item key="4">
-              <Link to="/chart">线图</Link>
-            </Menu.Item>
-          </SubMenu>
         </SubMenu>
       </Menu>
       </div>
