@@ -13,12 +13,12 @@ import {OpenMessageAction} from './messageActions';
 //thunk action creator
 export function loginStartAction(username, password) {
   return dispatch => {
-    return fetch(`${config.base_url}/accounts/login`, {
-      method: 'post',
+    return fetch(`${config.base_url}/login.json`, {
+      method: 'get',
       headers: {
         "Content-Type": "application/json"
-      },
-      body: `{"mobileNumber":${username},"password":"${password}"}`
+      }
+      // body: `{"mobileNumber":${username},"password":"${password}"}`
     }).then(res => res.json()).then(res => {
       window.localStorage.setItem('session', res.sessionToken);
       dispatch(OpenMessageAction('message', 'success', '登录成功'));

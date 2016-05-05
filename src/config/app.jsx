@@ -1,5 +1,5 @@
 'use strict';
 
 export default {
-  'base_url': ''
+  'base_url': '/mock'
 }

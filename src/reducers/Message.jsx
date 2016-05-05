@@ -7,7 +7,7 @@ import {
 
 const initialState = {
   method: 'message',
-  content: 'hello world',
+  content: '',
   type: 'error',
   show: false
 };
