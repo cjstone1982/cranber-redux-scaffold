@@ -14,7 +14,7 @@ const FormItem = Form.Item;
 
 function handleDelete(record) {
   const token = Store.getState().Auth.session.token;
-  fetch(`${base_url}/AdminApi/deleteSchedule`, {
+  fetch(`${base_url}`, {
     method: 'post',
     headers: {
       'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
