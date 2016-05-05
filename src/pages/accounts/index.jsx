@@ -29,7 +29,7 @@ function dispatchMsg(type, msg) {
 
 function handleDelete(id) {
   const token = Store.getState().Auth.session.token;
-  fetch(`${base_url}/AdminApi/deleteuser`, {
+  fetch(`${base_url}`, {
     method: 'post',
     headers: {
       'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'

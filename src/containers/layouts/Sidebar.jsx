@@ -32,9 +32,9 @@ const Sidebar = React.createClass({
             <Link to="/accounts"><span>用户列表</span></Link>
           </Menu.Item>
         </SubMenu>
-        <SubMenu key="sub2" title={<span><Icon type="appstore" />订单管理</span>}>
+        <SubMenu key="sub2" title={<span><Icon type="appstore" />订阅管理</span>}>
           <Menu.Item key="3">
-            <Link to="/orders">订单列表</Link>
+            <Link to="/orders">订阅列表</Link>
           </Menu.Item>
         </SubMenu>
       </Menu>

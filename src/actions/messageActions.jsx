@@ -5,7 +5,8 @@ import {
   CloseMessage
 } from '../constants';
 
-export function OpenMessageAction(method = 'message', type = 'info', content = 'hello world') {
+export function OpenMessageAction(method = 'message', type = 'info', content = '') {
+  console.log(arguments);
   return {
     type: OpenMessage,
     payload: {
