@@ -9,9 +9,13 @@ const Card = React.createClass({
     let cols = `col-${this.props.col || 8}`,
         classes = classNames('card-container', cols);
     return (
-      <div className={classes}>
-        <div className="card">
-          {this.props.title ? <div className="card-title">{this.props.title}</div>: null}
+      <div className={classes + ' ' + this.props.className}>
+        <div className="card" style={this.props.style}>
+          {
+            this.props.title ?
+              <div className="card-title">{this.props.title}</div> :
+              ''
+          }
           <div className="card-body">
             {this.props.children}
           </div>
