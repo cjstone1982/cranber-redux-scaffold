@@ -21,7 +21,9 @@ const Sidebar = React.createClass({
     return (
       <div className="layout-sidebar"
            style={{ width: 210 }}>
-        <div className="layout-title"></div>
+        <div className="layout-title">
+          <Link to="/">DashBoard</Link>
+        </div>
         <Menu onClick={this.handleClick}
             style={{ width: 210}}
             defaultOpenKeys={['sub1']}
