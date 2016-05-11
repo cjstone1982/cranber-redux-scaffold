@@ -8,7 +8,7 @@ import {
   LOGINFAIL,
   LOGINSUCCESS
 } from '../constants';
-import {OpenMessageAction} from './messageActions';
+import {OpenMessageAction} from './message.action';
 
 //thunk action creator
 export function loginStartAction(username, password) {

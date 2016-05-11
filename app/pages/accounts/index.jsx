@@ -6,8 +6,8 @@ import {Table, Modal, Form, Button, Input, Radio} from 'antd';
 import fetch from 'isomorphic-fetch';
 import {base_url} from '../../config/app';
 import Store from '../../store';
-import {getAccountsStartAction} from '../../actions/accountsAction';
-import {OpenMessageAction} from '../../actions/messageActions';
+import {getAccountsStartAction} from '../../actions/accounts.action';
+import {OpenMessageAction} from '../../actions/message.action';
 
 import field from './field';
 

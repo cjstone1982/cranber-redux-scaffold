@@ -3,7 +3,7 @@
 import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {Button, Form, Input, Icon, message} from 'antd';
-import {loginStartAction, logoutAction} from '../actions/authActions';
+import {loginStartAction, logoutAction} from '../actions/auth.action';
 import '../stylesheets/login.css';
 
 const FormItem = Form.Item;
