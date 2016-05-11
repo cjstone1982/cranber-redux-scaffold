@@ -3,6 +3,7 @@
 import React from 'react';
 import { Menu, Icon } from 'antd';
 import {Link} from 'react-router';
+import {sideBar as SideBar}  from '../../config/menu.config';
 
 const SubMenu = Menu.SubMenu;
 const Sidebar = React.createClass({
@@ -20,24 +21,53 @@ const Sidebar = React.createClass({
     return (
       <div className="layout-sidebar"
            style={{ width: 210 }}>
-        <div className="layout-title"></div>
+        <div className="layout-title">
+          <Link to="/">DashBoard</Link>
+        </div>
         <Menu onClick={this.handleClick}
             style={{ width: 210}}
             defaultOpenKeys={['sub1']}
             theme="dark-blue"
             selectedKeys={[this.state.current]}
             mode="inline">
-        <SubMenu key="sub1" title={<span><Icon type="appstore" />用户管理</span>}>
-          <Menu.Item key="1">
-            <Link to="/accounts"><span>用户列表</span></Link>
-          </Menu.Item>
-        </SubMenu>
-        <SubMenu key="sub2" title={<span><Icon type="appstore" />订阅管理</span>}>
-          <Menu.Item key="3">
-            <Link to="/orders">订阅列表</Link>
-          </Menu.Item>
-        </SubMenu>
-      </Menu>
+          {
+            SideBar.map((ele, index) => {
+              return (
+                <SubMenu key={`sub${index}`} title={<span>
+                  <Icon type={ele.icon} />{ele.title}</span>}>
+                  {
+                    ele.sub.map((sele, sindex) => {
+                      let subMenu;
+                      if (sele.sub && sele.sub.length) {
+                        subMenu = (
+                          <SubMenu key={`sub2${index}${sindex}`} title={sele.title}>
+                            {
+                              sele.sub.map((mele, mindex) => {
+                                return (
+                                  <Menu.Item key={`${index}${sindex}${mindex}`}>
+                                    <Link to={mele.link}>{mele.title}</Link>
+                                  </Menu.Item>
+                                );
+                              })
+                            }
+                          </SubMenu>
+                        );
+                      } else {
+                        subMenu = (
+                          <Menu.Item key={`${index}${sindex}`}>
+                            <Link to={sele.link}>{sele.title}</Link>
+                          </Menu.Item>
+                        );
+                      }
+
+                      return subMenu;
+                    })
+                  }
+                </SubMenu>
+              );
+            })
+          }
+        </Menu>
       </div>
     );
   }

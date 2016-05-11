@@ -16,6 +16,7 @@ import Login from './containers/Login';
  */
 import AccountsIndex from './pages/accounts/index';
 import OrdersIndex from './pages/orders/index';
+import DashBoardIndex from './pages/dashboard/index.page';
 
 const history = syncHistoryWithStore(hashHistory, Store);
 
@@ -47,7 +48,7 @@ const Routes = React.createClass({
           <Route component={App} >
             <Route path="/login" component={Login} />
             <Route path="/" component={Manage} onEnter={this.checkLogin}>
-              <IndexRoute component={AccountsIndex}/>
+              <IndexRoute component={DashBoardIndex}/>              
               <Route path="accounts" component={AccountsIndex} />
               <Route path="orders" component={OrdersIndex} />
             </Route>
