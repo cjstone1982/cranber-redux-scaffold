@@ -3,37 +3,33 @@
 import fetch from 'isomorphic-fetch';
 import config from '../config/app';
 import {
-  GETACCOUNTSSTART,
-  GETACCOUNTSSCUUESS,
-  GETACCOUNTSFAIL
+  GETORDERSFAIL,
+  GETORDERSSTART,
+  GETORDERSSUCCESS
 } from '../constants';
-import {OpenMessageAction} from './messageActions';
+import {OpenMessageAction} from './message.action';
 import Store from '../store';
 
-export function getAccountsStartAction() {
+export function getOrdersStartAction() {
   return dispatch =>
-    fetch(`${config.base_url}/accounts.json`, {
-      method: 'get',
+    fetch(`${config.base_url}/administration/orders`, {
+      method: 'GET',
       headers: {
         "Content-Type": "application/json",
         "Authorization": `session-token ${Store.getState().Auth.session.token}`
       }
     }).then(res => res.json()).then(res => {
-      dispatch(getAccountsSuccessAction(res));
+      dispatch(getOrdersSuccessAction(res));
     }).catch(res => {
       dispatch(OpenMessageAction('message', 'error', res.error));
     });
 }
 
-export function getAccountsSuccessAction(data) {
+export function getOrdersSuccessAction(data) {
   return {
-    type: GETACCOUNTSSCUUESS,
+    type: GETORDERSSUCCESS,
     payload: {
       data: data
     }
   }
-}
-
-export function getAccountsFailAction() {
-
 }

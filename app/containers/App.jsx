@@ -4,7 +4,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {message} from 'antd';
 import '../stylesheets/app.css';
-import {CloseMessageAction} from '../actions/messageActions';
+import {CloseMessageAction} from '../actions/message.action';
 
 const App = React.createClass({
   propTypes: {

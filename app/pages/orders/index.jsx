@@ -6,8 +6,8 @@ import {Table, Modal, Button, Form, Input, DatePicker} from 'antd';
 import fetch from 'isomorphic-fetch';
 import {base_url} from '../../config/app';
 import Store from '../../store';
-import {OpenMessageAction} from '../../actions/messageActions';
-import {getOrdersStartAction} from '../../actions/ordersAction';
+import {OpenMessageAction} from '../../actions/message.action';
+import {getOrdersStartAction} from '../../actions/orders.action';
 import field from './field';
 
 const FormItem = Form.Item;

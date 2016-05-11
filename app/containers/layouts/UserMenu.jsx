@@ -3,10 +3,10 @@
 import React from 'react';
 import {Menu, Dropdown, Icon} from 'antd';
 import Store from '../../store';
-import {FlushSession} from '../../actions/authActions';
+import {FlushSession} from '../../actions/auth.action';
 import {LOGOUT} from '../../constants';
 
-import avatar_pic from '../../images/avatar.png';
+import avatar_pic from '../../../assets/images/avatar.png';
 
 const MenuFunc = {
   logout() {
