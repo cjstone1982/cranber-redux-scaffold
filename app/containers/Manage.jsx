@@ -6,7 +6,7 @@ import {connect} from 'react-redux';
 import Sidebar from './layouts/Sidebar';
 import ContentBox from './layouts/ContentBox';
 import Header from './layouts/Header';
-import {StoreSession, loginSuccessAction} from '../actions/authActions';
+import {StoreSession, loginSuccessAction} from '../actions/auth.action';
 
 const Manage  = React.createClass({
   propTypes: {
