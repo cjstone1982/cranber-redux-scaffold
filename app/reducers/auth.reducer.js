@@ -35,7 +35,7 @@ switchMap[constants.LOGOUT] = (state) => {
   });
 };
 
-export default function Login(state = initialState, action) {
+export default function Auth(state = initialState, action) {
   if (switchMap[action.type]) {
     return switchMap[action.type](state, action);
   } else{

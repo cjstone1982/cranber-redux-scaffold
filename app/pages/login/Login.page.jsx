@@ -3,8 +3,8 @@
 import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {Button, Form, Input, Icon, message} from 'antd';
-import {loginStartAction, logoutAction} from '../actions/auth.action';
-import '../stylesheets/login.css';
+import {loginStartAction, logoutAction} from '../../actions/auth.action';
+import '../../stylesheets/login.css';
 
 const FormItem = Form.Item;
 
@@ -58,11 +58,10 @@ const Login = React.createClass({
     return (
       <div className="layout-login">
         <div className="login-box">
-          <div className="login-logo">
-          </div>
+          <div className="login-logo"></div>
           <FormPart isLogin={this.props.isLogin}
                     isLoading={this.props.isLoading}
-                    loginHandler = {this.loginHandler}/>
+                    loginHandler = {this.loginHandler} />
         </div>
       </div>
     );
