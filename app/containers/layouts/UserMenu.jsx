@@ -12,6 +12,7 @@ const MenuFunc = {
   logout() {
     window.localStorage.removeItem('session'); //need patch
     Store.dispatch({type: LOGOUT});
+    window.location.hash = '#/';
   }
 };
 
