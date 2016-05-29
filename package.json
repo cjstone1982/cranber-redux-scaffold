@@ -1,12 +1,12 @@
 {
-  "name": "Cranberry-Scaffold",
-  "version": "0.4.0",
+  "name": "Cranber-Redux-Scaffold",
+  "version": "0.5.5",
   "author": "Guox",
   "entry": {
-    "index": "./src/index.jsx"
+    "index": "./app/index.jsx"
   },
   "dependencies": {
-    "antd": "~0.12.0",
+    "antd": "^1.2.1",
     "atool-build": "0.5.x",
     "babel-plugin-antd": "^0.2.0",
     "classnames": "^2.2.3",

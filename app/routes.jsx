@@ -1,19 +1,15 @@
 "use strict";
 
 import React from 'react';
-import { Router, Route, Link, IndexRoute, hashHistory } from 'react-router';
+import { Router, Route, Link, IndexRoute, hashHistory, Redirect } from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';
 import { Provider } from 'react-redux';
 import Store from './store';
-/*
-  layout
- */
+//layout
 import App from './containers/App';
 import Manage from './containers/Manage';
-import Login from './containers/Login';
-/*
-  pages
- */
+import Login from './pages/login/Login.page';
+//pages
 import AccountsIndex from './pages/accounts/index';
 import OrdersIndex from './pages/orders/index';
 import DashBoardIndex from './pages/dashboard/index.page';
@@ -48,11 +44,12 @@ const Routes = React.createClass({
           <Route component={App} >
             <Route path="/login" component={Login} />
             <Route path="/" component={Manage} onEnter={this.checkLogin}>
-              <IndexRoute component={DashBoardIndex}/>              
+              <IndexRoute component={DashBoardIndex}/>
               <Route path="accounts" component={AccountsIndex} />
               <Route path="orders" component={OrdersIndex} />
             </Route>
           </Route>
+          <Redirect from="*" to="/" />
         </Router>
       </Provider>
     );

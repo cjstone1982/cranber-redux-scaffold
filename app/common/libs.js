@@ -1,4 +1,4 @@
 "use strict";
 
-import 'antd/lib/index.css';
+import 'antd/dist/antd.css';
 import '../stylesheets/layout.css';

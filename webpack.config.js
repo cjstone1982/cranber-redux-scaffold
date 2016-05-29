@@ -1,6 +1,5 @@
 var path = require('path');
 module.exports = function(webpackConfig) {
-  console.log(webpackConfig);
   webpackConfig.entry['index'][1] = path.resolve(__dirname, 'app', 'index.jsx');
 
   webpackConfig.module.loaders.forEach(function(loader) {
