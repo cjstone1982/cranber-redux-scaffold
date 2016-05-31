@@ -13,7 +13,7 @@ import {OpenMessageAction} from './message.action';
 //thunk action creator
 export function loginStartAction(username, password) {
   return dispatch => {
-    return fetch(`${config.base_url}/login.json`, {
+    return fetch(`${config.baseUrl}/login.json`, {
       method: 'get',
       headers: {
         "Content-Type": "application/json"

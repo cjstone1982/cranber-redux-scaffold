@@ -4,7 +4,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {Table, Modal, Form, Button, Input, Radio} from 'antd';
 import fetch from 'isomorphic-fetch';
-import {base_url} from '../../config/app';
+import {baseUrl} from '../../config/app';
 import Store from '../../store';
 import {getAccountsStartAction} from '../../actions/accounts.action';
 import {OpenMessageAction} from '../../actions/message.action';
@@ -29,7 +29,7 @@ function dispatchMsg(type, msg) {
 
 function handleDelete(id) {
   const token = Store.getState().Auth.session.token;
-  fetch(`${base_url}`, {
+  fetch(`${baseUrl}`, {
     method: 'post',
     headers: {
       'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'

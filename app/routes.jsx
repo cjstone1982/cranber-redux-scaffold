@@ -6,9 +6,9 @@ import { syncHistoryWithStore } from 'react-router-redux';
 import { Provider } from 'react-redux';
 import Store from './store';
 //layout
-import App from './containers/App';
-import Manage from './containers/Manage';
-import Login from './pages/login/Login.page';
+import App from './layouts/app.component';
+import Manage from './layouts/manage.component';
+import Login from './pages/login/login.page';
 //pages
 import AccountsIndex from './pages/accounts/index';
 import OrdersIndex from './pages/orders/index';

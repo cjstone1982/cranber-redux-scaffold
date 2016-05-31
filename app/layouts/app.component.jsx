@@ -1,10 +1,8 @@
-"use strict";
-
 import React from 'react';
 import {connect} from 'react-redux';
 import {message} from 'antd';
-import '../stylesheets/app.css';
 import {CloseMessageAction} from '../actions/message.action';
+import '../stylesheets/app.css';
 
 const App = React.createClass({
   propTypes: {
