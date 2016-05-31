@@ -2,7 +2,7 @@
 
 import React from 'react';
 import {Link} from 'react-router';
-import UserMenu from './UserMenu';
+import UserMenu from './userMenu.component';
 
 const Header = React.createClass({
   render() {

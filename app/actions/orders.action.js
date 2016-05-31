@@ -12,7 +12,7 @@ import Store from '../store';
 
 export function getOrdersStartAction() {
   return dispatch =>
-    fetch(`${config.base_url}/administration/orders`, {
+    fetch(`${config.baseUrl}/administration/orders`, {
       method: 'GET',
       headers: {
         "Content-Type": "application/json",

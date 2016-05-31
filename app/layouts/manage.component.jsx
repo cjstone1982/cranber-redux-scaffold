@@ -3,9 +3,9 @@
 import React from 'react';
 import {connect} from 'react-redux';
 
-import Sidebar from './layouts/Sidebar';
-import ContentBox from './layouts/ContentBox';
-import Header from './layouts/Header';
+import Sidebar from './sidebar.component';
+import ContentBox from './contentBox.component';
+import Header from './header.component';
 import {StoreSession, loginSuccessAction} from '../actions/auth.action';
 
 const Manage  = React.createClass({

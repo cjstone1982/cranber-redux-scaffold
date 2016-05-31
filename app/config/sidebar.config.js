@@ -1,4 +1,4 @@
-const SideBar = [
+export default [
   {
     title: '用户管理',
     icon: 'appstore',
@@ -31,8 +31,3 @@ const SideBar = [
     ]
   }
 ];
-
-
-export default {
-  sideBar: SideBar
-};

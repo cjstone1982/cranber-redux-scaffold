@@ -1,9 +1,9 @@
 "use strict";
 
 import React from 'react';
-import { Menu, Icon } from 'antd';
+import {Menu, Icon} from 'antd';
 import {Link} from 'react-router';
-import {sideBar as SideBar}  from '../../config/menu.config';
+import {sidebar}  from '../config/app';
 
 const SubMenu = Menu.SubMenu;
 const Sidebar = React.createClass({
@@ -31,7 +31,7 @@ const Sidebar = React.createClass({
             selectedKeys={[this.state.current]}
             mode="inline">
           {
-            SideBar.map((ele, index) => {
+            sidebar.map((ele, index) => {
               return (
                 <SubMenu key={`sub${index}`} title={<span>
                   <Icon type={ele.icon} />{ele.title}</span>}>
