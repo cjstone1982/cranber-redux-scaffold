@@ -3,6 +3,7 @@
 import sidebarConfig from './sidebar.config';
 
 export default {
-  baseUrl: '/mock',
+  siteTitle: '天外天',
+  baseUrl: 'http://localhost:8989/api',
   sidebar: sidebarConfig
 }
