@@ -1,5 +1,4 @@
-// Learn more on how to config.
-// - https://github.com/ant-tool/atool-build#配置扩展
+'use strict';
 
 const webpack = require('atool-build/lib/webpack');
 const fs = require('fs');
@@ -28,13 +27,13 @@ module.exports = function(webpackConfig) {
     }
   });
 
-  // Load src/entries/*.js as entry automatically.
-  const files = glob.sync('./src/entries/*.js');
+  const files = glob.sync('./app/*.jsx');
   const newEntries = files.reduce(function(memo, file) {
-    const name = path.basename(file, '.js');
+    const name = path.basename(file, '.jsx');
     memo[name] = file;
     return memo;
   }, {});
+
   webpackConfig.entry = Object.assign({}, webpackConfig.entry, newEntries);
 
   return webpackConfig;
