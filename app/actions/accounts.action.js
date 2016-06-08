@@ -3,11 +3,11 @@
 import fetch from 'isomorphic-fetch';
 import config from '../config/app';
 import {
-  GETACCOUNTSSTART,
-  GETACCOUNTSSCUUESS,
-  GETACCOUNTSFAIL
-} from '../constants';
-import {OpenMessageAction} from './message.action';
+  GET_ACCOUNTS,
+  GET_ACCOUNTS_SUCCESS,
+  GET_ACCOUNTS_FAILURE
+} from '../constants/actions';
+import {openMessage} from './message.action';
 import Store from '../store';
 
 export function getAccountsStartAction() {
@@ -21,7 +21,7 @@ export function getAccountsStartAction() {
     }).then(res => res.json()).then(res => {
       dispatch(getAccountsSuccessAction(res));
     }).catch(res => {
-      dispatch(OpenMessageAction('message', 'error', res.error));
+      dispatch(openMessage('error', res.error));
     });
 }
 

@@ -5,14 +5,12 @@ import { Router, Route, Link, IndexRoute, hashHistory, Redirect } from 'react-ro
 import { syncHistoryWithStore } from 'react-router-redux';
 import { Provider } from 'react-redux';
 import Store from './store';
-//layout
-import App from './layouts/app.component';
-import Manage from './layouts/manage.component';
-import Login from './pages/login/login.page';
+import App from './components/App/app.component';
+import Manage from './components/Manage/manage.component';
 //pages
-import AccountsIndex from './pages/accounts/index';
-import OrdersIndex from './pages/orders/index';
-import DashBoardIndex from './pages/dashboard/index.page';
+import Login from './pages/Login/login.page';
+import AccountsIndex from './pages/Accounts/index';
+import DashBoardIndex from './pages/Dashboard/index.page';
 
 const history = syncHistoryWithStore(hashHistory, Store);
 
@@ -25,9 +23,10 @@ const Routes = React.createClass({
   },
   checkLocalSession() {
     let localToken = window.localStorage.getItem('session');
+    //TODO: verify token
     if (localToken) {
       Store.dispatch({
-        type: 'LOGINSUCCESS',
+        type: 'LOGIN_SUCCESS',
         payload: {
           token: localToken
         }
@@ -46,7 +45,6 @@ const Routes = React.createClass({
             <Route path="/" component={Manage} onEnter={this.checkLogin}>
               <IndexRoute component={DashBoardIndex}/>
               <Route path="accounts" component={AccountsIndex} />
-              <Route path="orders" component={OrdersIndex} />
             </Route>
           </Route>
           <Redirect from="*" to="/" />

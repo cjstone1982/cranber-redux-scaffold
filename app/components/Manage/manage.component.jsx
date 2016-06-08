@@ -3,10 +3,10 @@
 import React from 'react';
 import {connect} from 'react-redux';
 
-import Sidebar from './sidebar.component';
-import ContentBox from './contentBox.component';
-import Header from './header.component';
-import {StoreSession, loginSuccessAction} from '../actions/auth.action';
+import Sidebar from '../Sidebar/sidebar.component';
+import ContentBox from '../ContentBox/contentBox.component';
+import Header from '../Header/header.component';
+import {StoreSession, loginSuccessAction} from '../../actions/auth.action';
 
 const Manage  = React.createClass({
   propTypes: {

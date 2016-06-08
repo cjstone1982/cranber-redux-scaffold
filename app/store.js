@@ -7,7 +7,6 @@ import thunkMiddleware from 'redux-thunk';
 import Auth from './reducers/auth.reducer';
 import Message from './reducers/message.reducer';
 import Accounts from './reducers/accounts.reducer';
-import Orders from './reducers/orders.reducer';
 
 const loggerMiddleware = createLogger();
 
@@ -17,7 +16,6 @@ let Store = createStore(
     Auth,
     Message,
     Accounts,
-    Orders,
     routing: routerReducer
     //service state
   }),

@@ -3,46 +3,36 @@
 import fetch from 'isomorphic-fetch';
 import config from '../config/app';
 import {
-  LOGINSTART,
+  LOGIN,
   LOGOUT,
-  LOGINFAIL,
-  LOGINSUCCESS
-} from '../constants';
-import {OpenMessageAction} from './message.action';
+  LOGIN_FAILURE,
+  LOGIN_SUCCESS
+} from '../constants/actions';
+import {openMessage} from '../actions/message.action';
 
-//thunk action creator
 export function loginStartAction(username, password) {
   return dispatch => {
-    return fetch(`${config.baseUrl}/login.json`, {
+    return fetch(`${config.baseUrl}/login`, {
       method: 'get',
       headers: {
         "Content-Type": "application/json"
       }
-      // body: `{"mobileNumber":${username},"password":"${password}"}`
     }).then(res => res.json()).then(res => {
       window.localStorage.setItem('session', res.sessionToken);
-      dispatch(OpenMessageAction('message', 'success', '登录成功'));
-      dispatch(loginSuccessAction(res));
+
+      dispatch(openMessage('success', '登录成功'));
+      dispatch({
+        type: LOGIN_SUCCESS,
+        payload: {
+          token: res.sessionToken
+        }
+      });
     }).catch(res => {
-      console.log(res);
-      dispatch(OpenMessageAction('message', 'error', res.error));
-      dispatch(loginFailAction());
+      dispatch(openMessage('error', res.error));
+      dispatch({
+        type: LOGIN_FAILURE
+      });
     });
-  }
-}
-
-export function loginSuccessAction(res) {
-  return {
-    type: LOGINSUCCESS,
-    payload: {
-      token: res.sessionToken
-    }
-  }
-}
-
-export function loginFailAction() {
-  return {
-    type: LOGINFAIL
   }
 }
 

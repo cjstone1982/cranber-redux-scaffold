@@ -18,7 +18,7 @@ export default [
     sub: [
       {
         title: '订阅列表',
-        link: '/orders'
+        link: '/'
       }, {
         title: '三级导航',
         sub: [

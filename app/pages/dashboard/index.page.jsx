@@ -4,9 +4,9 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {Table, Modal, Form, Button, Input, Radio, Card, Col, Row} from 'antd';
 import {baseUrl} from '../../config/app';
-import LineChart from './lineChart.component';
-import BarChart from './barChart.component';
-import '../../stylesheets/pages/dashboard.css';
+import LineChart from '../../components/Charts/lineChart.component';
+import BarChart from '../../components/Charts/barChart.component';
+import './dashboard.css';
 
 const DashBoardIndex = React.createClass({
   propTypes: {

@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Routes from './routes';
-import './common/libs';
+import 'antd/dist/antd.css';
 
 ReactDOM.render((
   <Routes />

@@ -1,6 +1,8 @@
 "use strict";
 
-import * as constants from '../constants';
+import {
+  GET_ACCOUNTS_SUCCESS
+} from '../constants/actions';
 
 let switchMap = [];
 
@@ -8,7 +10,7 @@ let initialState = {
   data: []
 };
 
-switchMap[constants.GETACCOUNTSSCUUESS] = (state, action) => {
+switchMap[GET_ACCOUNTS_SUCCESS] = (state, action) => {
   return Object.assign({}, state, {
     data: action.payload.data
   });
