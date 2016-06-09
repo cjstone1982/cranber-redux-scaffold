@@ -13,18 +13,22 @@ const App = React.createClass({
     }),
     dispatch: React.PropTypes.func.isRequired
   },
+
   contextTypes: {
     router: React.PropTypes.object.isRequired
   },
+
   checkMessage() {
     if (this.props.Message.show) { //其他state的改变回引起多次执行
       message[this.props.Message.type](this.props.Message.content);
       this.props.dispatch(closeMessage());
     }
   },
+
   componentDidUpdate() {
     this.checkMessage();
   },
+
   render() {
     return (
       <div style={{height: '100%', minWidth: '900px'}}>

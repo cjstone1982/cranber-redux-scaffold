@@ -4,7 +4,7 @@ import React from 'react';
 import {Menu, Dropdown, Icon} from 'antd';
 import Store from '../../store';
 import {LOGOUT} from '../../constants/actions';
-import './userMenu.less';
+import './userMenu.css';
 import avatar_pic from '../../../assets/images/avatar.png';
 
 const MenuFunc = {

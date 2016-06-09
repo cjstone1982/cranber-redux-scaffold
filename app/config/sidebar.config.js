@@ -6,10 +6,6 @@ export default [
       {
         title: '用户列表',
         link: '/accounts'
-      },
-      {
-        title: '用户行为',
-        link: ''
       }
     ]
   }, {
