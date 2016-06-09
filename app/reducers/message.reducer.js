@@ -1,9 +1,9 @@
 'use strict';
 
 import {
-  OpenMessage,
-  CloseMessage
-} from '../constants';
+  OPEN_MESSAGE,
+  CLOSE_MESSAGE
+} from '../constants/actions';
 
 const initialState = {
   method: 'message',
@@ -14,7 +14,7 @@ const initialState = {
 
 let switchMap = {};
 
-switchMap[OpenMessage] = (state, action) => {
+switchMap[OPEN_MESSAGE] = (state, action) => {
   return Object.assign({}, state, {
     show: true,
     content: action.payload.content,
@@ -23,7 +23,7 @@ switchMap[OpenMessage] = (state, action) => {
   });
 };
 
-switchMap[CloseMessage] = (state) => {
+switchMap[CLOSE_MESSAGE] = (state) => {
   return Object.assign({}, state, {
     show: false
   });

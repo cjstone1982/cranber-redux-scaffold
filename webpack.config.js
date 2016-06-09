@@ -27,7 +27,7 @@ module.exports = function(webpackConfig) {
     }
   });
 
-  const files = glob.sync('./app/*.jsx');
+  const files = glob.sync('./app/index.jsx');
   const newEntries = files.reduce(function(memo, file) {
     const name = path.basename(file, '.jsx');
     memo[name] = file;

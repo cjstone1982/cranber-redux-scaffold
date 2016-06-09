@@ -1,25 +1,23 @@
 'use strict';
 
 import {
-  OpenMessage,
-  CloseMessage
-} from '../constants';
+  OPEN_MESSAGE,
+  CLOSE_MESSAGE
+} from '../constants/actions';
 
-export function OpenMessageAction(method = 'message', type = 'info', content = '') {
-  console.log(arguments);
+export function openMessage(type = 'info', content = '') {
   return {
-    type: OpenMessage,
+    type: OPEN_MESSAGE,
     payload: {
       show: true,
       type: type,
-      content: content,
-      method: method.toLowerCase()
+      content: content
     }
   }
 }
 
-export function CloseMessageAction () {
+export function closeMessage () {
   return {
-    type: CloseMessage
+    type: CLOSE_MESSAGE
   }
 }

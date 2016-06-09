@@ -3,7 +3,8 @@
 import React from 'react';
 import {Menu, Icon} from 'antd';
 import {Link} from 'react-router';
-import {sidebar}  from '../config/app';
+import {sidebar}  from '../../config/app';
+import './sidebar.css';
 
 const SubMenu = Menu.SubMenu;
 const Sidebar = React.createClass({

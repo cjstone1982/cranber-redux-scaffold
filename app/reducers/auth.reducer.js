@@ -1,6 +1,10 @@
 "use strict";
 
-import * as constants from '../constants';
+import {
+  LOGIN_SUCCESS,
+  LOGIN_FAILURE,
+  LOGOUT
+} from '../constants/actions';
 
 const initialState = {
   isLogin: false,
@@ -12,7 +16,7 @@ const initialState = {
 
 let switchMap = {};
 
-switchMap[constants.LOGINSUCCESS] = (state, action) => {
+switchMap[LOGIN_SUCCESS] = (state, action) => {
     return Object.assign({}, state, {
     isLogin: true,
     isLoading: false,
@@ -22,14 +26,14 @@ switchMap[constants.LOGINSUCCESS] = (state, action) => {
   });
 };
 
-switchMap[constants.LOGINFAIL] = (state) => {
+switchMap[LOGIN_FAILURE] = (state) => {
   return Object.assign({}, state, {
     isLogin: false,
     isLoading: false
   });
 };
 
-switchMap[constants.LOGOUT] = (state) => {
+switchMap[LOGOUT] = (state) => {
   return Object.assign({}, state, {
     isLogin: false
   });

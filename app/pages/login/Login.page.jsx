@@ -3,8 +3,8 @@
 import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {Button, Form, Input, Icon, message} from 'antd';
-import {loginStartAction, logoutAction} from '../../actions/auth.action';
-import '../../stylesheets/login.css';
+import {loginStartAction} from '../../actions/auth.action';
+import './login.css';
 
 const FormItem = Form.Item;
 
@@ -68,7 +68,6 @@ const Login = React.createClass({
   }
 });
 
-//connect component with dispatch propType
 export default connect(
   state => (state.Auth)
 )(Login);
