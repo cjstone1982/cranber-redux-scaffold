@@ -12,12 +12,10 @@ const loggerMiddleware = createLogger();
 
 let Store = createStore(
   combineReducers({
-    //core state
     Auth,
     Message,
     Accounts,
     routing: routerReducer
-    //service state
   }),
   applyMiddleware(
     thunkMiddleware,

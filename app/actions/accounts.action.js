@@ -10,7 +10,7 @@ import {
 import {openMessage} from './message.action';
 import Store from '../store';
 
-export function getAccountsStartAction() {
+export function getAccounts() {
   return dispatch =>
     fetch(`${config.baseUrl}/accounts`, {
       method: 'get',
@@ -19,21 +19,29 @@ export function getAccountsStartAction() {
         "Authorization": `session-token ${Store.getState().Auth.session.token}`
       }
     }).then(res => res.json()).then(res => {
-      dispatch(getAccountsSuccessAction(res));
+      dispatch(getAccountsSuccess(res));
+      return res;
     }).catch(res => {
       dispatch(openMessage('error', res.error));
     });
 }
 
-export function getAccountsSuccessAction(data) {
+export function getAccountsSuccess(data) {
   return {
-    type: GETACCOUNTSSCUUESS,
+    type: GET_ACCOUNTS_SUCCESS,
     payload: {
       data: data
     }
   }
 }
 
-export function getAccountsFailAction() {
+export function getAccountsFail() {
+  return {
+    type: GET_ACCOUNTS_FAILURE
+  }
+}
+
+export function createAccount() {
 
 }
+

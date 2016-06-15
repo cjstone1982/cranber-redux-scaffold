@@ -8,7 +8,7 @@ const glob = require('glob');
 module.exports = function(webpackConfig) {
   webpackConfig.babel.plugins.push('transform-runtime');
   webpackConfig.babel.plugins.push(['antd', {
-    style: 'css',  // if true, use less
+    style: 'css'  // if true, use less
   }]);
 
   // Enable this if you have to support IE8.
@@ -27,14 +27,30 @@ module.exports = function(webpackConfig) {
     }
   });
 
-  const files = glob.sync('./app/index.jsx');
-  const newEntries = files.reduce(function(memo, file) {
-    const name = path.basename(file, '.jsx');
-    memo[name] = file;
-    return memo;
-  }, {});
+  const newEntries = {
+    vendor: [
+      'react',
+      'react-dom',
+      'history',
+      'classnames',
+      'react-router',
+      'react-redux',
+      'react-router-redux',
+      'redux-logger',
+      'redux-thunk'
+    ]
+  };
 
   webpackConfig.entry = Object.assign({}, webpackConfig.entry, newEntries);
+
+  webpackConfig.plugins.shift();
+
+  webpackConfig.plugins.push(
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'vendor',
+      filename: 'vendor.bundle.js'
+    })
+  );
 
   return webpackConfig;
 };
