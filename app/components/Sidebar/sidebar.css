@@ -18,12 +18,14 @@
 .ant-menu-dark-blue .ant-menu-item-group{
   color: #fff;
 }
-.ant-menu-submenu{
-  color: #fff;
-  background: rgb(34, 52, 68);
+.ant-menu-item > a:hover{
+  color: #fff !important;
 }
-.ant-menu-dark-blue .ant-menu-item:hover,
-.ant-menu-dark-blue .ant-menu-submenu-title:hover{
+.ant-menu-submenu, .ant-menu-dark-blue .ant-menu-submenu-title{
+  color: #fff;
+  background: rgb(34, 52, 68) !important;
+}
+.ant-menu-dark-blue .ant-menu-item:hover{
   background: rgb(0, 182, 232);
 }
 .ant-menu-dark-blue .ant-menu-item-selected,

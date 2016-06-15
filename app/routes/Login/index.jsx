@@ -41,7 +41,6 @@ const FormData = React.createClass({
 });
 const FormPart = Form.create()(FormData);
 
-//@connect(state => {..})
 const Login = React.createClass({
   propTypes: {
     dispatch: PropTypes.func.isRequired
