@@ -13,11 +13,10 @@ TWTStudio React Scaffold For Admin System
 
 ### 原则
 - 贴合业务，适应灵活的业务需求
-- 方便配置，尽可能发挥JSX的优越性
+- 方便配置，尽可能发挥 JSX 的优越性
 - 封装React路由，抽象成数据结构代码
-- 友好的状态展示，如各类情求的message，process等
-- 语义化，未接触JS也能快速上手
-- 每个JSX文件包含一个主组件
+- 友好的状态展示，如各类情求的 message，process 等
+- 每个 JSX 文件包含一个主组件
 
 ### 架构
 |结构|选型|
@@ -29,19 +28,39 @@ TWTStudio React Scaffold For Admin System
 |数据层|Redux|
 |Middleware|[redux-logger](https://github.com/fcomb/redux-logger) [redux-thunk](https://github.com/gaearon/redux-thunk)|
 
-### 层次
-- App View
-  - Manage + Layout
-	  - ContentBox
-		  - Content Layout + Grid
-			  - Components
-  - Login
-- Actions
-- Reducers
-- Store
+### Dev
+1. `npm install`
+2. `npm run dev` 使用 dora 作为本地开发的 web 服务器监听 8001, 并使用了 proxy 插件开启代理服务器, 监听8989.  
+3.  HTTP 代理. 在 `proxy.config.js` 中编写路由映射. [使用文档](https://github.com/dora-js/dora-plugin-proxy)
+
+### Usage
+
+build完成后在项目入口文件中引入两个文件. 默认 webpack 配置将第三方库单独打包到 `vendor.bundle.js` 中, 部分非系统核心库采用 amd 方式在使用的时候异步引入.
+```
+  <script src="./vendor.bundle.js"></script>
+  <script src="./index.js"></script>
+```
+
+### 目录结构
+- actions
+- components
+- config
+  - app.js
+  - ...
+- constants
+  - actions.js
+  - ...
+- reducers
+  - auth.reducer.js
+  - message.reducer.js
+- routes
+- utils
+- index.jsx
+- router.jsx
+- store.js
 
 ### 核心State
-  - message: 全局消息通知, 包括message, notification
+  - message: 全局消息通知, 即 ant-design 的 message 组件
 
     ```
      {
@@ -52,7 +71,7 @@ TWTStudio React Scaffold For Admin System
 
   - login
   - loading
-  - dashboard
   
 ### 参考文献
   [Best practice on handling data flow for login / signup pages with redirect](https://github.com/reactjs/redux/issues/297)
+  [flux-standard-action](https://github.com/acdlite/flux-standard-action)

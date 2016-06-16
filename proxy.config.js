@@ -6,6 +6,7 @@ module.exports = {
       });
     }, 1000);
   },
+
   '/api/accounts': function (req, res) {
     setTimeout(function () {
       res.json([{
