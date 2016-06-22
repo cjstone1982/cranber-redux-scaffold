@@ -1,5 +1,3 @@
-'use strict';
-
 import React from 'react';
 import {connect} from 'react-redux';
 
@@ -12,17 +10,21 @@ const Manage  = React.createClass({
   propTypes: {
     dispatch: React.PropTypes.func.isRequired
   },
+
   contextTypes: {
     router: React.PropTypes.object.isRequired
   },
+
   checkLogin() {
     if (!this.props.Auth.isLogin) {
       this.context.router.push('/login');
     }
   },
+
   componentDidUpdate() {
     this.checkLogin();
   },
+
   render() {
     return (
       <div style={{height: '100%'}}>

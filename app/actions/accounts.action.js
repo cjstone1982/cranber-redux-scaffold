@@ -1,11 +1,12 @@
-"use strict";
-
 import fetch from 'isomorphic-fetch';
 import config from '../config/app';
 import {
   GET_ACCOUNTS,
   GET_ACCOUNTS_SUCCESS,
-  GET_ACCOUNTS_FAILURE
+  GET_ACCOUNTS_FAILURE,
+  POST_ACCOUNTS,
+  POST_ACCOUNTS_SUCCESS,
+  POST_ACCOUNTS_FAILURE
 } from '../constants/actions';
 import {openMessage} from './message.action';
 import Store from '../store';
@@ -13,7 +14,7 @@ import Store from '../store';
 export function getAccounts() {
   return dispatch =>
     fetch(`${config.baseUrl}/accounts`, {
-      method: 'get',
+      method: 'GET',
       headers: {
         "Content-Type": "application/json",
         "Authorization": `session-token ${Store.getState().Auth.session.token}`
@@ -41,7 +42,34 @@ export function getAccountsFail() {
   }
 }
 
-export function createAccount() {
+export function createAccount(data) {
+  return dispatch =>
+    fetch(`${config.baseUrl}/accounts`, {
+      method: 'POST',
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `session-token ${Store.getState().Auth.session.token}`
+      }
+    }).then(res => res.json()).then(res => {
+      dispatch(createAccountSuccess(res));
+      return res;
+    }).catch(res => {
+      dispatch(openMessage('error', res.error));
+    });
+}
 
+export function createAccountSuccess(data) {
+  return {
+    type: POST_ACCOUNTS,
+    payload: {
+      data: data
+    }
+  }
+}
+
+export function createAccountFail() {
+  return {
+    type: POST_ACCOUNTS_FAILURE
+  }
 }
 

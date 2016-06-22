@@ -1,7 +1,6 @@
-'use strict';
-
 import React from 'react';
 import {connect} from 'react-redux';
+import {Link} from 'react-router';
 import {Table, Button} from 'antd';
 import {getAccounts} from '../../actions/accounts.action';
 import field from './field';
@@ -14,7 +13,7 @@ const columns = [
     render(text, record) {
       return (
         <span>
-          <a className="edit-btn">编辑</a>
+          <Link className="edit-btn" to={`accounts/edit/${record.accountId}`}>编辑</Link>
         </span>
       );
     }

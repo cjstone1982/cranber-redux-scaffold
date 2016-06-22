@@ -1,5 +1,3 @@
-"use strict";
-
 import React from 'react';
 import { Router, Route, IndexRoute, hashHistory, Redirect } from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';

@@ -6,7 +6,7 @@
     "index": "./app/index.jsx"
   },
   "dependencies": {
-    "antd": "^1.2.1",
+    "antd": "^1.5.1",
     "atool-build": "^0.7.5",
     "babel-plugin-antd": "^0.4.0",
     "babel-plugin-transform-runtime": "^6.9.0",

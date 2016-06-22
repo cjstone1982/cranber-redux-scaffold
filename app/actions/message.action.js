@@ -1,5 +1,3 @@
-'use strict';
-
 import {
   OPEN_MESSAGE,
   CLOSE_MESSAGE

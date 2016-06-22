@@ -1,5 +1,3 @@
-'use strict';
-
 import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {Button, Form, Input, Icon, message} from 'antd';
@@ -14,11 +12,13 @@ const FormData = React.createClass({
     isLoading: PropTypes.bool.isRequired,
     loginHandler: PropTypes.func.isRequired
   },
+
   handleSubmit(e) {
     e.preventDefault();
     let formValue = this.props.form.getFieldsValue();
     this.props.loginHandler(formValue.username, formValue.password);
   },
+
   render() {
     const {getFieldProps} = this.props.form;
 
@@ -45,14 +45,17 @@ const Login = React.createClass({
   propTypes: {
     dispatch: PropTypes.func.isRequired
   },
+
   contextTypes: {
     router: React.PropTypes.object.isRequired
   },
+
   loginHandler(username, password) {
     this.props.dispatch(loginStartAction(username, password)).then( () => {
       this.context.router.push('/');
     });
   },
+
   render() {
     return (
       <div className="layout-login">

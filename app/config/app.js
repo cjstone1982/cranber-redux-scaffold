@@ -1,5 +1,3 @@
-'use strict';
-
 import sidebarConfig from './sidebar.config';
 
 export default {
