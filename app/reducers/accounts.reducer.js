@@ -14,7 +14,7 @@ switchMap[GET_ACCOUNTS_SUCCESS] = (state, action) => {
   });
 };
 
-export default function Accounts(state = initialState, action) {
+export default (state = initialState, action) => {
   if (switchMap[action.type]) {
     return switchMap[action.type](state, action);
   } else{

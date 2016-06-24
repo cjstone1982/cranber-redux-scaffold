@@ -1,45 +1,27 @@
-import fetch from 'isomorphic-fetch';
-import config from '../config/app';
 import {
-  LOGIN,
-  LOGOUT,
-  LOGIN_FAILURE,
-  LOGIN_SUCCESS
+  SET_AUTH,
+  DESTORY_AUTH
 } from '../constants/actions';
-import {openMessage} from '../actions/message.action';
+import {openMessageAction} from '../actions/message.action';
 
-export function loginStartAction(username, password) {
-  return dispatch => {
-    return fetch(`${config.baseUrl}/login`, {
-      method: 'get',
-      headers: {
-        "Content-Type": "application/json"
-      }
-    }).then(res => res.json()).then(res => {
-      window.localStorage.setItem('session', res.sessionToken);
+export function setAuthAction(authData) {
+  window.localStorage.setItem('session', JSON.stringify(auth));
 
-      dispatch(openMessage('success', '登录成功'));
-      dispatch({
-        type: LOGIN_SUCCESS,
-        payload: {
-          token: res.sessionToken
-        }
-      });
-    }).catch(res => {
-      dispatch(openMessage('error', res.error));
-      dispatch({
-        type: LOGIN_FAILURE
-      });
-    });
+  return {
+    type: SET_AUTH,
+    payload: {
+      token: authData.sessionToken,
+      username: authData.username,
+      role: authData.role
+    }
   }
 }
 
 export function logoutAction() {
   return {
-    type: LOGOUT
+    type: DESTORY_AUTH
   }
 }
-
 
 export function FlushSession() {
   return dispatch => {

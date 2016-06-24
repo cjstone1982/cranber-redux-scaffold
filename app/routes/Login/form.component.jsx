@@ -1,16 +1,15 @@
-import React, {PropTypes} from 'react';
-import {Form} from 'antd';
+import React from 'react';
+import {Form, Input, Button} from 'antd';
 import {autobind} from 'core-decorators';
 
 const FormItem = Form.Item;
 
 class FormData extends React.Component {
   static propTypes = {
-    isLogin: PropTypes.bool.isRequired,
-    isLoading: PropTypes.bool.isRequired,
-    loginHandler: PropTypes.func.isRequired
+    loading: React.PropTypes.bool.isRequired,
+    loginHandler: React.PropTypes.func.isRequired
   }
-  
+
   @autobind()
   handleSubmit(e) {
     e.preventDefault();
@@ -30,7 +29,7 @@ class FormData extends React.Component {
           <Input type="password" placeholder="密码" {...getFieldProps('password')}/>
         </FormItem>
         <Button type="primary"
-                loading={ this.props.isLoading }
+                loading={ this.props.loading }
                 htmlType="submit" >
           登录
         </Button>

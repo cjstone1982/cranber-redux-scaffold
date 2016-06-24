@@ -1,6 +1,6 @@
 {
-  "name": "Cranber-Redux-Scaffold",
-  "version": "0.5.8",
+  "name": "cranber-redux-scaffold",
+  "version": "0.6.0",
   "description": "Redux CMS scaffold built with ant-design",
   "author": "Guox",
   "entry": {

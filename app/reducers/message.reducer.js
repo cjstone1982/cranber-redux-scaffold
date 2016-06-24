@@ -26,7 +26,7 @@ switchMap[CLOSE_MESSAGE] = (state) => {
   });
 };
 
-export default function Message(state = initialState, action) {
+export default (state = initialState, action) => {
   if (switchMap[action.type]) {
     return switchMap[action.type](state, action);
   } else {

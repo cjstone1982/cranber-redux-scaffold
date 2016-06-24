@@ -15,7 +15,7 @@ const history = syncHistoryWithStore(hashHistory, Store);
 
 export default React.createClass({
   checkLogin(next, replace) {
-    let isLogin = Store.getState().Auth.isLogin;
+    let isLogin = Store.getState().auth.token;
     if (!isLogin && !this.checkLocalSession()) {
       replace('/login');
     }

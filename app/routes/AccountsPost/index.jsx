@@ -4,7 +4,7 @@ import {Table, Button} from 'antd';
 import {createAccount} from '../../actions/accounts.action';
 import AccountForm from './form';
 
-@connect(state => state.Accounts)
+@connect(state => state.accounts)
 class AccountsPostIndex extends React.Component {
   static propTypes = {
     dispatch: React.PropTypes.func.isRequired,

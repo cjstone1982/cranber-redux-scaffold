@@ -2,9 +2,11 @@ module.exports = {
   'GET /api/login': function (req, res) {
     setTimeout(function () {
       res.json({
-        "sessionToken": "098f6bcd4621d373cade4e832627b4f6"
+        "sessionToken": "098f6bcd4621d373cade4e832627b4f6",
+        "username": "administrator",
+        "role": "admin"
       });
-    }, 1000);
+    }, 3000);
   },
 
   'GET /api/accounts': function (req, res) {

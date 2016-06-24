@@ -1,33 +1,38 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {message} from 'antd';
-import {closeMessage} from '../../actions/message.action';
+import {closeMessageAction} from '../../actions/message.action';
 import './app.css';
 
-const App = React.createClass({
-  propTypes: {
+@connect(
+  state => ({
+    message: message
+  })
+)
+class App extends React.Component {
+  static propTypes = {
     Message: React.PropTypes.shape({
       content: React.PropTypes.string,
       type: React.PropTypes.oneOf(['error', 'success', 'info', 'loading']),
       show: React.PropTypes.bool
     }),
     dispatch: React.PropTypes.func.isRequired
-  },
+  }
 
-  contextTypes: {
+  static contextTypes = {
     router: React.PropTypes.object.isRequired
-  },
+  }
 
   checkMessage() {
-    if (this.props.Message.show) { //其他state的改变回引起多次执行
-      message[this.props.Message.type](this.props.Message.content);
-      this.props.dispatch(closeMessage());
+    if (this.props.message.show) { //其他state的改变回引起多次执行
+      message[this.props.message.type](this.props.message.content);
+      this.props.dispatch(closeMessageAction());
     }
-  },
+  }
 
   componentDidUpdate() {
     this.checkMessage();
-  },
+  }
 
   render() {
     return (
@@ -36,8 +41,6 @@ const App = React.createClass({
       </div>
     );
   }
-});
+}
 
-export default connect(
-  state => state
-)(App);
+export default App;

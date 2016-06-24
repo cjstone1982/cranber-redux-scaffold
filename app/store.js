@@ -2,19 +2,21 @@ import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { routerReducer } from 'react-router-redux';
 import createLogger from 'redux-logger';
 import thunkMiddleware from 'redux-thunk';
-import Auth from './reducers/auth.reducer';
-import Message from './reducers/message.reducer';
-import Accounts from './reducers/accounts.reducer';
-import Dashboard from './reducers/dashboard.reducer';
+import auth from './reducers/auth.reducer';
+import message from './reducers/message.reducer';
+import accounts from './reducers/accounts.reducer';
+import dashboard from './reducers/dashboard.reducer';
+import login from './reducers/login.reducer';
 
 const loggerMiddleware = createLogger();
 
 let Store = createStore(
   combineReducers({
-    Auth,
-    Message,
-    Dashboard,
-    Accounts,
+    auth,
+    message,
+    dashboard,
+    accounts,
+    login,
     routing: routerReducer
   }),
   applyMiddleware(

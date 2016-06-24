@@ -1,8 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
-
+import {Breadcrumb, QueueAnim} from 'antd';
 import Sidebar from '../Sidebar/sidebar.component';
-import ContentBox from '../ContentBox/contentBox.component';
 import Header from '../Header/header.component';
 import {StoreSession, loginSuccessAction} from '../../actions/auth.action';
 
@@ -16,7 +15,7 @@ const Manage  = React.createClass({
   },
 
   checkLogin() {
-    if (!this.props.Auth.isLogin) {
+    if (!this.props.auth.token) {
       this.context.router.push('/login');
     }
   },
@@ -30,7 +29,9 @@ const Manage  = React.createClass({
       <div style={{height: '100%'}}>
         <Header />
         <Sidebar />
-        <ContentBox children={this.props.children} />
+        <div className="layout-contentbox clearfix">
+          {this.props.children}
+        </div>
       </div>
     );
   }
@@ -38,6 +39,6 @@ const Manage  = React.createClass({
 
 export default connect(
   state => ({
-    Auth: state.Auth
+    auth: state.auth
   })
 )(Manage);

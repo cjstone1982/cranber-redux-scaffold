@@ -21,7 +21,7 @@ const columns = [
   }
 ];
 
-@connect(state => (state.Accounts))
+@connect(state => (state.accounts))
 class AccountsIndex extends React.Component {
   static propTypes = {
     dispatch: React.PropTypes.func.isRequired,

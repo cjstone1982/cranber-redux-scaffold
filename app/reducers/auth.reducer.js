@@ -1,43 +1,33 @@
 import {
-  LOGIN_SUCCESS,
-  LOGIN_FAILURE,
-  LOGOUT
+  SET_AUTH,
+  DESTORY_AUTH
 } from '../constants/actions';
 
 const initialState = {
-  isLogin: false,
-  isLoading: false,
-  session: {
-    token: null
-  }
+  token: null,
+  username: null,
+  role: null
 };
 
 let switchMap = {};
 
-switchMap[LOGIN_SUCCESS] = (state, action) => {
+switchMap[SET_AUTH] = (state, action) => {
     return Object.assign({}, state, {
-    isLogin: true,
-    isLoading: false,
-    session: {
-      token: action.payload.token
-    }
-  });
+      token: action.payload.token,
+      username: action.payload.username,
+      role: action.payload.role
+    });
 };
 
-switchMap[LOGIN_FAILURE] = (state) => {
+switchMap[DESTORY_AUTH] = (state) => {
   return Object.assign({}, state, {
-    isLogin: false,
-    isLoading: false
+    token: null,
+    username: null,
+    role: null
   });
 };
 
-switchMap[LOGOUT] = (state) => {
-  return Object.assign({}, state, {
-    isLogin: false
-  });
-};
-
-export default function Auth(state = initialState, action) {
+export default (state = initialState, action) => {
   if (switchMap[action.type]) {
     return switchMap[action.type](state, action);
   } else{

@@ -3,7 +3,7 @@ import {
   CLOSE_MESSAGE
 } from '../constants/actions';
 
-export function openMessage(type = 'info', content = '') {
+export function openMessageAction(type = 'info', content = '') {
   return {
     type: OPEN_MESSAGE,
     payload: {
@@ -14,7 +14,7 @@ export function openMessage(type = 'info', content = '') {
   }
 }
 
-export function closeMessage () {
+export function closeMessageAction () {
   return {
     type: CLOSE_MESSAGE
   }

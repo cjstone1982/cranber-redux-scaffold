@@ -8,7 +8,7 @@ import {
   POST_ACCOUNTS_SUCCESS,
   POST_ACCOUNTS_FAILURE
 } from '../constants/actions';
-import {openMessage} from './message.action';
+import {openMessageAction} from './message.action';
 import Store from '../store';
 
 export function getAccounts() {
@@ -17,13 +17,13 @@ export function getAccounts() {
       method: 'GET',
       headers: {
         "Content-Type": "application/json",
-        "Authorization": `session-token ${Store.getState().Auth.session.token}`
+        "Authorization": `session-token ${Store.getState().auth.token}`
       }
     }).then(res => res.json()).then(res => {
       dispatch(getAccountsSuccess(res));
       return res;
     }).catch(res => {
-      dispatch(openMessage('error', res.error));
+      dispatch(openMessageAction('error', res.error));
     });
 }
 
@@ -48,13 +48,13 @@ export function createAccount(data) {
       method: 'POST',
       headers: {
         "Content-Type": "application/json",
-        "Authorization": `session-token ${Store.getState().Auth.session.token}`
+        "Authorization": `session-token ${Store.getState().auth.token}`
       }
     }).then(res => res.json()).then(res => {
       dispatch(createAccountSuccess(res));
       return res;
     }).catch(res => {
-      dispatch(openMessage('error', res.error));
+      dispatch(openMessageAction('error', res.error));
     });
 }
 
