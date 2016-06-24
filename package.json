@@ -1,10 +1,20 @@
 {
   "name": "Cranber-Redux-Scaffold",
   "version": "0.5.8",
+  "description": "Redux CMS scaffold built with ant-design",
   "author": "Guox",
   "entry": {
     "index": "./app/index.jsx"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/guox191/cranber-redux-scaffold.git"
+  },
+  "keywords": [
+    "redux",
+    "react",
+    "scaffold"
+  ],
   "dependencies": {
     "antd": "^1.5.1",
     "atool-build": "^0.7.5",
@@ -17,7 +27,6 @@
     "fbjs": "^0.8.0",
     "history": "^3.0.0",
     "isomorphic-fetch": "^2.2.1",
-    "pre-commit": "1.x",
     "react": "^15.1.0",
     "react-dom": "^15.1.0",
     "react-redux": "^4.4.0",
@@ -40,12 +49,11 @@
     "eslint-plugin-react": "^5.1.1",
     "redux-devtools": "^3.1.1"
   },
-  "pre-commit": [
-    "lint"
-  ],
   "scripts": {
     "dev": "dora -p 8001 --plugins \"webpack,hmr,proxy,livereload?enableJs=false&injectHost=127.0.0.1,browser-history?index=/index.html\"",
     "lint": "eslint --ext .js,.jsx src",
     "build": "atool-build -o ./dist/${npm_package_version}"
-  }
+  },
+  "bugs": "https://github.com/guox191/cranber-redux-scaffold/issues",
+  "license": "MIT"
 }
