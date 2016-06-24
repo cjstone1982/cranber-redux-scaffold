@@ -1,5 +1,3 @@
-'use strict';
-
 import keyMirror from 'fbjs/lib/keyMirror';
 
 export default keyMirror({
@@ -16,6 +14,9 @@ export default keyMirror({
 
   GET_ACCOUNTS: null,
   GET_ACCOUNTS_SUCCESS: null,
-  GET_ACCOUNTS_FAILURE: null
+  GET_ACCOUNTS_FAILURE: null,
+  POST_ACCOUNTS: null,
+  POST_ACCOUNTS_SUCCESS: null,
+  POST_ACCOUNTS_FAILURE: null
 });
 

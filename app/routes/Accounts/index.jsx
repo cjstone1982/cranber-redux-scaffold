@@ -1,7 +1,7 @@
-'use strict';
-
 import React from 'react';
 import {connect} from 'react-redux';
+import {autobind} from 'core-decorators';
+import {Link} from 'react-router';
 import {Table, Button} from 'antd';
 import {getAccounts} from '../../actions/accounts.action';
 import field from './field';
@@ -14,34 +14,38 @@ const columns = [
     render(text, record) {
       return (
         <span>
-          <a className="edit-btn">编辑</a>
+          <Link className="edit-btn" to={`accounts/edit/${record.accountId}`}>编辑</Link>
         </span>
       );
     }
   }
 ];
 
-const AccountsIndex = React.createClass({
-  propTypes: {
+@connect(state => (state.Accounts))
+class AccountsIndex extends React.Component {
+  static propTypes = {
     dispatch: React.PropTypes.func.isRequired,
     data: React.PropTypes.array.isRequired
-  },
+  }
 
-  getInitialState() {
-    return {
-      selectedRowKeys: [],
-      loading: false,
-      editRecord: {}
-    };
-  },
+  state = {
+    selectedRowKeys: [],
+    loading: false,
+    editRecord: {}
+  }
+
+  constructor(props) {
+    super(props);
+  }
 
   componentDidMount() {
     this.props.dispatch(getAccounts()).then(res => {});
-  },
+  }
 
+  @autobind()
   onSelectChange(selectedRowKeys) {
     this.setState({ selectedRowKeys });
-  },
+  }
 
   render() {
     const { loading, selectedRowKeys } = this.state;
@@ -68,8 +72,6 @@ const AccountsIndex = React.createClass({
       </div>
     );
   }
-});
+}
 
-export default connect(
-  state => (state.Accounts)
-)(AccountsIndex);
+export default AccountsIndex;

@@ -1,5 +1,3 @@
-"use strict";
-
 import {
   GET_ACCOUNTS_SUCCESS
 } from '../constants/actions';

@@ -1,5 +1,3 @@
-"use strict";
-
 import fetch from 'isomorphic-fetch';
 import config from '../config/app';
 import {

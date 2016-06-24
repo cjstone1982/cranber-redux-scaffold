@@ -5,10 +5,10 @@ export default [
     sub: [
       {
         title: '用户列表',
-        link: '/accounts'
+        link: 'accounts'
       }, {
         title: '添加用户',
-        link: '/accounts/post'
+        link: 'accounts/post'
       }
     ]
   }, {

@@ -1,5 +1,3 @@
-'use strict';
-
 import React from 'react';
 import {Menu, Dropdown, Icon} from 'antd';
 import Store from '../../store';

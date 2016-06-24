@@ -1,5 +1,3 @@
-'use strict';
-
 import {
   OPEN_MESSAGE,
   CLOSE_MESSAGE
@@ -11,7 +9,6 @@ const initialState = {
   type: 'error',
   show: false
 };
-
 let switchMap = {};
 
 switchMap[OPEN_MESSAGE] = (state, action) => {

@@ -1,5 +1,3 @@
-"use strict";
-
 import React from 'react';
 import {Menu, Icon} from 'antd';
 import {Link} from 'react-router';
@@ -7,17 +5,20 @@ import {sidebar}  from '../../config/app';
 import './sidebar.css';
 
 const SubMenu = Menu.SubMenu;
+
 const Sidebar = React.createClass({
   getInitialState() {
     return {
       current: '1'
     };
   },
+
   handleClick(e) {
     this.setState({
       current: e.key
     });
   },
+  
   render() {
     return (
       <div className="layout-sidebar"

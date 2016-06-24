@@ -1,5 +1,3 @@
-"use strict";
-
 import React from 'react';
 import { Router, Route, IndexRoute, hashHistory, Redirect } from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';
@@ -22,6 +20,7 @@ export default React.createClass({
       replace('/login');
     }
   },
+
   checkLocalSession() {
     let localToken = window.localStorage.getItem('session');
     //TODO: verify token
@@ -37,6 +36,7 @@ export default React.createClass({
       return false;
     }
   },
+
   render() {
     return (
       <Provider store={Store}>
