@@ -9,7 +9,6 @@ const initialState = {
   type: 'error',
   show: false
 };
-
 let switchMap = {};
 
 switchMap[OPEN_MESSAGE] = (state, action) => {

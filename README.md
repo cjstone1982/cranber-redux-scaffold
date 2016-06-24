@@ -70,7 +70,22 @@ build完成后在项目入口文件中引入两个文件. 默认 webpack 配置�
 
   - login
   - loading
-  
+
+### 语法特性
+项目中尝试性地通过 babel 引入 ES6/ES7 新特性和实用的语法糖, 旨在编写可读性好,简洁优雅的代码.
+
+ES6:
+ - Class
+ - Arrow function
+ - Module
+ - let / const
+ - Destructuring assignment
+
+ES7:
+ - Property initializer
+ - Decorator
+
+
 ### 参考文献
   [Best practice on handling data flow for login / signup pages with redirect](https://github.com/reactjs/redux/issues/297)
   [flux-standard-action](https://github.com/acdlite/flux-standard-action)

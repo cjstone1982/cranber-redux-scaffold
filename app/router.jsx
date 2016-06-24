@@ -20,6 +20,7 @@ export default React.createClass({
       replace('/login');
     }
   },
+
   checkLocalSession() {
     let localToken = window.localStorage.getItem('session');
     //TODO: verify token
@@ -35,6 +36,7 @@ export default React.createClass({
       return false;
     }
   },
+
   render() {
     return (
       <Provider store={Store}>
