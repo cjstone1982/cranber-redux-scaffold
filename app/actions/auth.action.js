@@ -5,7 +5,7 @@ import {
 import {openMessageAction} from '../actions/message.action';
 
 export function setAuthAction(authData) {
-  window.localStorage.setItem('session', JSON.stringify(auth));
+  window.localStorage.setItem('session', JSON.stringify(authData));
 
   return {
     type: SET_AUTH,

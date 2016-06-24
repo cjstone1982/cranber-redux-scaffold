@@ -10,17 +10,25 @@ import {
 
 export function loginStartAction(username, password) {
   return dispatch => {
-    return fetch(`${config.baseUrl}/login`, {
-      method: 'get',
-      headers: {
-        "Content-Type": "application/json"
+    (async () => {
+      try {
+        let response = await fetch(`${config.baseUrl}/login`, {
+          method: 'get',
+          headers: {
+            "Content-Type": "application/json"
+          }
+        });
+        let data = await response.json();
+        if (response.status === 200) {
+          dispatch(setAuthAction(data));
+          dispatch(openMessageAction('success', '登录成功'));
+        } else {
+          dispatch(openMessageAction('error', data.error));
+        }
+      } catch (e) {
+        console.error('Fetch error:', e);
       }
-    }).then(res => res.json()).then(res => {
-      dispatch(setAuthAction(res));
-      dispatch(openMessageAction('success', '登录成功'));
-    }).catch(res => {
-      dispatch(openMessageAction('error', res.error));
-    });
+    })();
   }
 }
 

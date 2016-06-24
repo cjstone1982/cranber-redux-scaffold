@@ -22,9 +22,7 @@ class Login extends React.Component {
 
   @autobind()
   loginHandler(username, password) {
-    this.props.dispatch(loginStartAction(username, password)).then( () => {
-      this.context.router.push('/');
-    });
+    this.props.dispatch(loginStartAction(username, password));
   }
 
   render() {

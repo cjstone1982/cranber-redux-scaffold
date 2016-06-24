@@ -13,18 +13,25 @@ import Store from '../store';
 
 export function getAccounts() {
   return dispatch =>
-    fetch(`${config.baseUrl}/accounts`, {
-      method: 'GET',
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": `session-token ${Store.getState().auth.token}`
+    (async () => {
+      try {
+        let response = await fetch(`${config.baseUrl}/accounts`, {
+          method: 'GET',
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": `session-token ${Store.getState().auth.token}`
+          }
+        });
+        let data = await response.json();
+        if (response.status === 200) {
+          dispatch(getAccountsSuccess(data));
+        } else {
+          dispatch(openMessageAction('error', data.error));
+        }
+      } catch (e) {
+        console.error('Fetch error:', e);
       }
-    }).then(res => res.json()).then(res => {
-      dispatch(getAccountsSuccess(res));
-      return res;
-    }).catch(res => {
-      dispatch(openMessageAction('error', res.error));
-    });
+    })();
 }
 
 export function getAccountsSuccess(data) {
