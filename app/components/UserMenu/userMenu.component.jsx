@@ -1,15 +1,13 @@
 import React from 'react';
 import {Menu, Dropdown, Icon} from 'antd';
 import Store from '../../store';
-import {LOGOUT} from '../../constants/actions';
-import './userMenu.css';
+import {logoutAction} from '../../actions/accounts.action';
 import avatar_pic from '../../../assets/images/avatar.png';
+import './userMenu.css';
 
 const MenuFunc = {
   logout() {
-    window.localStorage.removeItem('session'); //need patch
-    Store.dispatch({type: LOGOUT});
-    window.location.hash = '#/';
+    Store.dispatch(logoutAction());
   }
 };
 
@@ -25,10 +23,11 @@ const menu = (
   </Menu>
 );
 
-const UserMenu = React.createClass({
-  contextTypes: {
+class UserMenu extends React.Component {
+  static contextTypes = {
     router: React.PropTypes.object.isRequired
-  },
+  }
+
   render() {
     return (
       <div className="layout-menu-user">
@@ -41,6 +40,6 @@ const UserMenu = React.createClass({
       </div>
     );
   }
-});
+}
 
 export default UserMenu;

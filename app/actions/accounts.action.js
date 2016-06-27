@@ -8,23 +8,32 @@ import {
   POST_ACCOUNTS_SUCCESS,
   POST_ACCOUNTS_FAILURE
 } from '../constants/actions';
-import {openMessage} from './message.action';
+import {openMessageAction} from './message.action';
+import {destoryAuthAction} from './auth.action';
 import Store from '../store';
 
 export function getAccounts() {
-  return dispatch =>
-    fetch(`${config.baseUrl}/accounts`, {
-      method: 'GET',
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": `session-token ${Store.getState().Auth.session.token}`
+  return dispatch => {
+    (async() => {
+      try {
+        let response = await fetch(`${config.baseUrl}/accounts`, {
+          method: 'GET',
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": `session-token ${Store.getState().auth.token}`
+          }
+        });
+        let data = await response.json();
+        if (response.status === 200) {
+          dispatch(getAccountsSuccess(data));
+        } else {
+          dispatch(openMessageAction(data.error, 'error'));
+        }
+      } catch (e) {
+        console.error('Fetch error:', e);
       }
-    }).then(res => res.json()).then(res => {
-      dispatch(getAccountsSuccess(res));
-      return res;
-    }).catch(res => {
-      dispatch(openMessage('error', res.error));
-    });
+    })();
+  }
 }
 
 export function getAccountsSuccess(data) {
@@ -48,13 +57,13 @@ export function createAccount(data) {
       method: 'POST',
       headers: {
         "Content-Type": "application/json",
-        "Authorization": `session-token ${Store.getState().Auth.session.token}`
+        "Authorization": `session-token ${Store.getState().auth.token}`
       }
     }).then(res => res.json()).then(res => {
       dispatch(createAccountSuccess(res));
       return res;
     }).catch(res => {
-      dispatch(openMessage('error', res.error));
+      dispatch(openMessageAction(res.error, 'error'));
     });
 }
 
@@ -73,3 +82,10 @@ export function createAccountFail() {
   }
 }
 
+export function logoutAction() {
+  return dispatch => {
+    window.localStorage.removeItem('session');
+    window.location.hash = 'login';
+    dispatch(destoryAuthAction());
+  }
+}

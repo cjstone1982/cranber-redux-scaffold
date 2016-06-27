@@ -1,28 +1,31 @@
 import {
-  OPEN_MESSAGE,
-  CLOSE_MESSAGE
+  LOGIN_AJAX_START,
+  LOGIN_SUCCESS,
+  LOGIN_FAILURE
 } from '../constants/actions';
 
 const initialState = {
-  content: '',
-  type: 'error',
-  show: false
+  loading: false
 };
 
 let switchMap = {};
 
-switchMap[OPEN_MESSAGE] = (state, action) => {
+switchMap[LOGIN_AJAX_START] = (state) => {
   return Object.assign({}, state, {
-    show: true,
-    content: action.payload.content,
-    type: action.payload.type
-  });
+    loading: true
+  })
 };
 
-switchMap[CLOSE_MESSAGE] = (state) => {
+switchMap[LOGIN_SUCCESS] = (state) => {
   return Object.assign({}, state, {
-    show: false
-  });
+    loading: false
+  })
+};
+
+switchMap[LOGIN_FAILURE] = (state) => {
+  return Object.assign({}, state, {
+    loading: false
+  })
 };
 
 export default (state = initialState, action) => {

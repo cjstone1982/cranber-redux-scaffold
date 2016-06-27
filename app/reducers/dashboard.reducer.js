@@ -20,6 +20,6 @@ const initialState = {
   ]
 };
 
-export default function Dashboard(state = initialState, action) {
+export default (state = initialState, action) => {
   return state;
 } 

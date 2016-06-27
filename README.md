@@ -80,6 +80,7 @@ ES6:
  - Module
  - let / const
  - Destructuring assignment
+ - Spread operator
 
 ES7:
  - Property initializer

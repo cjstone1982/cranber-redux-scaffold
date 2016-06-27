@@ -1,8 +1,8 @@
 {
-  "name": "Cranber-Redux-Scaffold",
-  "version": "0.5.8",
+  "name": "cranber-redux-scaffold",
+  "version": "0.6.0",
   "description": "Redux CMS scaffold built with ant-design",
-  "author": "Guox",
+  "author": "Guox <guoxiang191@gmail.com>",
   "entry": {
     "index": "./app/index.jsx"
   },
@@ -15,6 +15,13 @@
     "react",
     "scaffold"
   ],
+  "scripts": {
+    "dev": "dora -p 8001 --plugins \"webpack,hmr,proxy,livereload?enableJs=false&injectHost=127.0.0.1,browser-history?index=/index.html\"",
+    "lint": "eslint --ext .js,.jsx src",
+    "build": "atool-build -o ./dist/${npm_package_version}"
+  },
+  "bugs": "https://github.com/guox191/cranber-redux-scaffold/issues",
+  "license": "MIT",
   "dependencies": {
     "antd": "^1.5.1",
     "atool-build": "^0.7.5",
@@ -48,12 +55,5 @@
     "eslint-config-airbnb": "^9.0.1",
     "eslint-plugin-react": "^5.1.1",
     "redux-devtools": "^3.1.1"
-  },
-  "scripts": {
-    "dev": "dora -p 8001 --plugins \"webpack,hmr,proxy,livereload?enableJs=false&injectHost=127.0.0.1,browser-history?index=/index.html\"",
-    "lint": "eslint --ext .js,.jsx src",
-    "build": "atool-build -o ./dist/${npm_package_version}"
-  },
-  "bugs": "https://github.com/guox191/cranber-redux-scaffold/issues",
-  "license": "MIT"
+  }
 }

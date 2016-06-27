@@ -1,21 +1,26 @@
-import React, {PropTypes} from 'react';
-import {Form} from 'antd';
+import React from 'react';
+import {Form, Input, Button} from 'antd';
 import {autobind} from 'core-decorators';
+import {openMessageAction} from '../../actions/message.action';
 
 const FormItem = Form.Item;
 
 class FormData extends React.Component {
   static propTypes = {
-    isLogin: PropTypes.bool.isRequired,
-    isLoading: PropTypes.bool.isRequired,
-    loginHandler: PropTypes.func.isRequired
+    loading: React.PropTypes.bool.isRequired,
+    loginHandler: React.PropTypes.func.isRequired,
+    dispatch: React.PropTypes.func.isRequired
   }
-  
+
   @autobind()
   handleSubmit(e) {
     e.preventDefault();
     let formValue = this.props.form.getFieldsValue();
-    this.props.loginHandler(formValue.username, formValue.password);
+    if (!formValue.username || !formValue.password) {
+      this.props.dispatch(openMessageAction('请输入正确用户名/密码', 'error'));
+    } else {
+      this.props.loginHandler(formValue.username, formValue.password);
+    }
   }
 
   render() {
@@ -30,7 +35,7 @@ class FormData extends React.Component {
           <Input type="password" placeholder="密码" {...getFieldProps('password')}/>
         </FormItem>
         <Button type="primary"
-                loading={ this.props.isLoading }
+                loading={ this.props.loading }
                 htmlType="submit" >
           登录
         </Button>

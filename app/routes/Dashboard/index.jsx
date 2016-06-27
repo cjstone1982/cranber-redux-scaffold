@@ -6,7 +6,7 @@ import LineChart from '../../components/Charts/lineChart.component';
 import BarChart from '../../components/Charts/barChart.component';
 import './dashboard.css';
 
-@connect(state => (state.Dashboard))
+@connect(state => (state.dashboard))
 class DashBoardIndex extends React.Component {
   static propTypes = {
     dispatch: React.PropTypes.func.isRequired

@@ -1,33 +1,36 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {message} from 'antd';
-import {closeMessage} from '../../actions/message.action';
+import {closeMessageAction} from '../../actions/message.action';
 import './app.css';
 
-const App = React.createClass({
-  propTypes: {
-    Message: React.PropTypes.shape({
-      content: React.PropTypes.string,
-      type: React.PropTypes.oneOf(['error', 'success', 'info', 'loading']),
-      show: React.PropTypes.bool
-    }),
+@connect(
+  state => ({
+    message: state.message
+  })
+)
+class App extends React.Component {
+  static propTypes = {
+    message: React.PropTypes.object.isRequired,
     dispatch: React.PropTypes.func.isRequired
-  },
+  }
 
-  contextTypes: {
+  static contextTypes = {
     router: React.PropTypes.object.isRequired
-  },
+  }
 
-  checkMessage() {
-    if (this.props.Message.show) { //其他state的改变回引起多次执行
-      message[this.props.Message.type](this.props.Message.content);
-      this.props.dispatch(closeMessage());
+  showMessage(messageData) {
+    message[messageData.type](messageData.content);
+    this.props.dispatch(closeMessageAction());
+  }
+
+  shouldComponentUpdate(nextProps) {
+    if (nextProps.message.show) {
+      this.showMessage(nextProps.message);
     }
-  },
 
-  componentDidUpdate() {
-    this.checkMessage();
-  },
+    return true;
+  }
 
   render() {
     return (
@@ -36,8 +39,6 @@ const App = React.createClass({
       </div>
     );
   }
-});
+}
 
-export default connect(
-  state => state
-)(App);
+export default App;
