@@ -8,6 +8,7 @@ export default keyMirror({
   CLOSE_MESSAGE: null,
 
   LOGIN: null,
+  LOGIN_AJAX_START: null,
   LOGIN_SUCCESS: null,
   LOGIN_FAILURE: null,
 

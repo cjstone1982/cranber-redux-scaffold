@@ -3,6 +3,8 @@ import { Router, Route, IndexRoute, hashHistory, Redirect } from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';
 import { Provider } from 'react-redux';
 import Store from './store';
+import {autobind} from 'core-decorators';
+import {setAuthAction} from './actions/auth.action';
 import App from './components/App/app.component';
 import Manage from './components/Manage/manage.component';
 //routes
@@ -13,29 +15,31 @@ import DashBoardIndex from './routes/Dashboard/index';
 
 const history = syncHistoryWithStore(hashHistory, Store);
 
-export default React.createClass({
+class router extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  @autobind()
   checkLogin(next, replace) {
     let isLogin = Store.getState().auth.token;
     if (!isLogin && !this.checkLocalSession()) {
       replace('/login');
     }
-  },
+  }
 
+  @autobind()
   checkLocalSession() {
     let localToken = window.localStorage.getItem('session');
-    //TODO: verify token
     if (localToken) {
-      Store.dispatch({
-        type: 'LOGIN_SUCCESS',
-        payload: {
-          token: localToken
-        }
-      });
+      //verify
+      const authData = JSON.parse(localToken);
+      Store.dispatch(setAuthAction(authData));
       return true;
     } else {
       return false;
     }
-  },
+  }
 
   render() {
     return (
@@ -55,4 +59,6 @@ export default React.createClass({
       </Provider>
     );
   }
-});
+}
+
+export default router;

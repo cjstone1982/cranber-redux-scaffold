@@ -1,15 +1,13 @@
 import React from 'react';
 import {Menu, Dropdown, Icon} from 'antd';
 import Store from '../../store';
-import {logoutAction} from '../../actions/auth.action';
+import {logoutAction} from '../../actions/accounts.action';
 import avatar_pic from '../../../assets/images/avatar.png';
 import './userMenu.css';
 
 const MenuFunc = {
   logout() {
-    window.localStorage.removeItem('session'); //need patch
     Store.dispatch(logoutAction());
-    window.location.hash = '#/login';
   }
 };
 

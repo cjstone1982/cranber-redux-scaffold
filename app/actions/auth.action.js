@@ -2,11 +2,8 @@ import {
   SET_AUTH,
   DESTORY_AUTH
 } from '../constants/actions';
-import {openMessageAction} from '../actions/message.action';
 
 export function setAuthAction(authData) {
-  window.localStorage.setItem('session', JSON.stringify(authData));
-
   return {
     type: SET_AUTH,
     payload: {
@@ -17,7 +14,7 @@ export function setAuthAction(authData) {
   }
 }
 
-export function logoutAction() {
+export function destoryAuthAction() {
   return {
     type: DESTORY_AUTH
   }

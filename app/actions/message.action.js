@@ -3,7 +3,7 @@ import {
   CLOSE_MESSAGE
 } from '../constants/actions';
 
-export function openMessageAction(type = 'info', content = '') {
+export function openMessageAction(content = '', type = 'info') {
   return {
     type: OPEN_MESSAGE,
     payload: {

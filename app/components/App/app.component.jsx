@@ -6,16 +6,12 @@ import './app.css';
 
 @connect(
   state => ({
-    message: message
+    message: state.message
   })
 )
 class App extends React.Component {
   static propTypes = {
-    Message: React.PropTypes.shape({
-      content: React.PropTypes.string,
-      type: React.PropTypes.oneOf(['error', 'success', 'info', 'loading']),
-      show: React.PropTypes.bool
-    }),
+    message: React.PropTypes.object.isRequired,
     dispatch: React.PropTypes.func.isRequired
   }
 
@@ -23,15 +19,17 @@ class App extends React.Component {
     router: React.PropTypes.object.isRequired
   }
 
-  checkMessage() {
-    if (this.props.message.show) { //其他state的改变回引起多次执行
-      message[this.props.message.type](this.props.message.content);
-      this.props.dispatch(closeMessageAction());
-    }
+  showMessage(messageData) {
+    message[messageData.type](messageData.content);
+    this.props.dispatch(closeMessageAction());
   }
 
-  componentDidUpdate() {
-    this.checkMessage();
+  shouldComponentUpdate(nextProps) {
+    if (nextProps.message.show) {
+      this.showMessage(nextProps.message);
+    }
+
+    return true;
   }
 
   render() {

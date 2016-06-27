@@ -4,18 +4,17 @@ import {
 } from '../constants/actions';
 
 const initialState = {
-  method: 'message',
   content: '',
   type: 'error',
   show: false
 };
+
 let switchMap = {};
 
 switchMap[OPEN_MESSAGE] = (state, action) => {
   return Object.assign({}, state, {
     show: true,
     content: action.payload.content,
-    method: action.payload.method,
     type: action.payload.type
   });
 };

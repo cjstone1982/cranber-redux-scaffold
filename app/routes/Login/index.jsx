@@ -33,6 +33,7 @@ class Login extends React.Component {
             <img src={logoImage} alt="logo" style={{maxWidth: 160}} />
           </div>
           <FormComponent loginHandler={this.loginHandler}
+             dispatch = {this.props.dispatch}
             loading={this.props.loading} />
         </div>
       </div>

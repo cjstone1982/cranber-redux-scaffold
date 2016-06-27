@@ -9,11 +9,12 @@ import {
   POST_ACCOUNTS_FAILURE
 } from '../constants/actions';
 import {openMessageAction} from './message.action';
+import {destoryAuthAction} from './auth.action';
 import Store from '../store';
 
 export function getAccounts() {
-  return dispatch =>
-    (async () => {
+  return dispatch => {
+    (async() => {
       try {
         let response = await fetch(`${config.baseUrl}/accounts`, {
           method: 'GET',
@@ -26,12 +27,13 @@ export function getAccounts() {
         if (response.status === 200) {
           dispatch(getAccountsSuccess(data));
         } else {
-          dispatch(openMessageAction('error', data.error));
+          dispatch(openMessageAction(data.error, 'error'));
         }
       } catch (e) {
         console.error('Fetch error:', e);
       }
     })();
+  }
 }
 
 export function getAccountsSuccess(data) {
@@ -61,7 +63,7 @@ export function createAccount(data) {
       dispatch(createAccountSuccess(res));
       return res;
     }).catch(res => {
-      dispatch(openMessageAction('error', res.error));
+      dispatch(openMessageAction(res.error, 'error'));
     });
 }
 
@@ -80,3 +82,10 @@ export function createAccountFail() {
   }
 }
 
+export function logoutAction() {
+  return dispatch => {
+    window.localStorage.removeItem('session');
+    window.location.hash = 'login';
+    dispatch(destoryAuthAction());
+  }
+}
