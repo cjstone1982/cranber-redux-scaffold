@@ -1,33 +1,48 @@
 import React from 'react';
+import {connect} from 'react-redux';
 import {Menu, Icon} from 'antd';
 import {Link} from 'react-router';
 import {sidebar}  from '../../config/app';
+import {autobind} from 'core-decorators';
 import './sidebar.css';
 
 const SubMenu = Menu.SubMenu;
 
-const Sidebar = React.createClass({
-  getInitialState() {
-    return {
-      current: '1'
-    };
-  },
+@connect(state => ({
+  router: state.routing
+}))
+class Sidebar extends React.Component {
+  constructor(props) {
+      super(props);
+  }
 
-  handleClick(e) {
-    this.setState({
-      current: e.key
-    });
-  },
-  
+  @autobind()
+  getCurrentPath() {
+    const pathname = this.props.router.locationBeforeTransitions.pathname;
+    let cleanPath = pathname;
+    if (pathname !== '/' && pathname[0] === '/') {
+      cleanPath = pathname.slice(1, pathname.length);
+    }
+    return cleanPath;
+  }
+
+  shouldComponentUpdate(nextProps) {
+    const nextPath = nextProps.router.locationBeforeTransitions.pathname;
+    if (nextPath === this.props.router.locationBeforeTransitions.pathname) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
   render() {
     return (
       <div className="layout-sidebar"
            style={{ width: 210 }}>
-        <Menu onClick={this.handleClick}
-            style={{ width: 210}}
-            defaultOpenKeys={['sub0']}
+        <Menu style={{ width: 210}}
+            defaultOpenKeys={['sub0', 'sub1', 'sub10']}
             theme="dark-blue"
-            selectedKeys={[this.state.current]}
+            selectedKeys={[this.getCurrentPath()]}
             mode="inline">
           {
             sidebar.map((ele, index) => {
@@ -39,11 +54,11 @@ const Sidebar = React.createClass({
                       let subMenu;
                       if (sele.sub && sele.sub.length) {
                         subMenu = (
-                          <SubMenu key={`sub2${index}${sindex}`} title={sele.title}>
+                          <SubMenu key={`sub${index}${sindex}`} title={sele.title}>
                             {
                               sele.sub.map((mele, mindex) => {
                                 return (
-                                  <Menu.Item key={`${index}${sindex}${mindex}`}>
+                                  <Menu.Item key={mele.link}>
                                     <Link to={mele.link}>{mele.title}</Link>
                                   </Menu.Item>
                                 );
@@ -53,7 +68,7 @@ const Sidebar = React.createClass({
                         );
                       } else {
                         subMenu = (
-                          <Menu.Item key={`${index}${sindex}`}>
+                          <Menu.Item key={sele.link}>
                             <Link to={sele.link}>{sele.title}</Link>
                           </Menu.Item>
                         );
@@ -70,6 +85,6 @@ const Sidebar = React.createClass({
       </div>
     );
   }
-});
+}
 
 export default Sidebar;

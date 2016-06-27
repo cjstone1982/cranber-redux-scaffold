@@ -1,5 +1,5 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux';
-import { routerReducer } from 'react-router-redux';
+import { routerReducer as routing } from 'react-router-redux';
 import createLogger from 'redux-logger';
 import thunkMiddleware from 'redux-thunk';
 import auth from './reducers/auth.reducer';
@@ -17,7 +17,7 @@ let Store = createStore(
     dashboard,
     accounts,
     login,
-    routing: routerReducer
+    routing
   }),
   applyMiddleware(
     thunkMiddleware,

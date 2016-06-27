@@ -30,15 +30,15 @@ export function loginStartAction(username, password) {
           dispatch(setAuthAction(data));
           dispatch(loginSuccessAction());
           dispatch(openMessageAction('登录成功', 'success'));
-          window.localStorage.setItem('session', JSON.stringify(authData));
+          window.localStorage.setItem('session', JSON.stringify(data));
           window.location.hash = '/';
         } else {
           dispatch(openMessageAction(data.error, 'error'));
           dispatch(loginFailedAction());
         }
       } catch (e) {
-        console.error('Fetch error:', e);
         dispatch(loginFailedAction());
+        console.error('Fetch error:', e);
       }
     })();
   }

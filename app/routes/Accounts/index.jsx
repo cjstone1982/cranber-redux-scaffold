@@ -39,7 +39,7 @@ class AccountsIndex extends React.Component {
   }
 
   componentDidMount() {
-    this.props.dispatch(getAccounts()).then(res => {});
+    this.props.dispatch(getAccounts());
   }
 
   @autobind()
